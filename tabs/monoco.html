@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monoco</title>
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="armes.html" class="active">Armes</a></li>
+                <li><a href="competences-de-monoco.html">Compétences de Monoco</a></li>
+                <li><a href="disques.html">Disques</a></li>
+                <li><a href="pictos.html">Pictos</a></li>
+                <li><a href="tenues.html">Tenues</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Monoco</h1>
+        <!-- Sous-onglets -->
+        <nav class="sub-tabs">
+            <ul>
+                <li><a href="gustaveverso.html">Gustave/Verso</a></li>
+                <li><a href="lune.html">Lune</a></li>
+                <li><a href="maelle.html">Maelle</a></li>
+                <li><a href="monoco.html" class="active">Monoco</a></li>
+                <li><a href="sciel.html">Sciel</a></li>
+            </ul>
+        </nav>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Emplacement</th>
+                    <th>Élément</th>
+                    <th>Stats</th>
+                    <th>Obtenu</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Ballaro</td><td>Sirène</td><td>Lumière</td><td>Agilité/Défense</td><td><input type="checkbox"></td></tr>
+                <tr><td>Boucharo</td><td>Visages - Chapelier douloureux</td><td>Feu</td><td>Chance/Agilité</td><td><input type="checkbox"></td></tr>
+                <tr><td>Brumaro</td><td>Aberration Chromatique</td><td>Physique</td><td>Vitalité/Agilité</td><td><input type="checkbox"></td></tr>
+                <tr><td>Chromaro</td><td>Esquisses de Renoir - Grour (Marchand)</td><td>Glace</td><td>Défense/Agilité</td><td><input type="checkbox"></td></tr>
+                <tr><td>Fragaro</td><td>Intérieur du monolithe - Mistra (Marchand)</td><td>Foudre</td><td>Chance/Défense</td><td><input type="checkbox"></td></tr>
+                <tr><td>Joiro</td><td>Manoir suspendu - Sanctuaire de la nuit éternelle</td><td>Foudre</td><td>Défense/Agilité</td><td><input type="checkbox"></td></tr>
+                <tr><td>Grandaro</td><td>Gare de Monoco - Grandis (Marchand)</td><td>Terre</td><td>Vitalité/Défense</td><td><input type="checkbox"></td></tr>
+                <tr><td>Monocaro</td><td>Arme de départ</td><td>Physique</td><td>Agilité/Chance</td><td><input type="checkbox"></td></tr>
+                <tr><td>Nusaro</td><td>Vieille Lumière</td><td>Sombre</td><td>Agilité/Vitalité</td><td><input type="checkbox"></td></tr>
+                <tr><td>Sidaro</td><td>Village Gestral (Battre Golgra avec Monoco) - Manoir suspendu</td><td>Sombre</td><td>Force/Chance</td><td><input type="checkbox"></td></tr>
+                <tr><td>Urnaro</td><td>Île céleste</td><td>Terre</td><td>Vitalité/Chance</td><td><input type="checkbox"></td></tr>
+            </tbody>
+        </table>
+    </main>
+    <footer>
+        <p>&copy; 2025 Zatsu - Clair Obscur : Expédition 33 Ressources FR</p>
+    </footer>
+    <script>
+        // Sauvegarde l'état des cases à cocher dans le localStorage
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const pageKey = window.location.pathname.split('/').pop(); // Récupère le nom du fichier HTML
+            checkboxes.forEach((checkbox, index) => {
+                const savedState = localStorage.getItem(`${pageKey}-checkbox-${index}`);
+                if (savedState === 'true') {
+                    checkbox.checked = true;
+                }
+                checkbox.addEventListener('change', () => {
+                    localStorage.setItem(`${pageKey}-checkbox-${index}`, checkbox.checked);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
