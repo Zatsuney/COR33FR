@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sciel</title>
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="armes.html" class="active">Armes</a></li>
+                <li><a href="competences-de-monoco.html">Compétences de Monoco</a></li>
+                <li><a href="disques.html">Disques</a></li>
+                <li><a href="pictos.html">Pictos</a></li>
+                <li><a href="tenues.html">Tenues</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Sciel</h1>
+        <!-- Sous-onglets -->
+        <nav class="sub-tabs">
+            <ul>
+                <li><a href="gustaveverso.html">Gustave/Verso</a></li>
+                <li><a href="lune.html">Lune</a></li>
+                <li><a href="maelle.html">Maelle</a></li>
+                <li><a href="monoco.html">Monoco</a></li>
+                <li><a href="sciel.html" class="active">Sciel</a></li>
+            </ul>
+        </nav>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Emplacement</th>
+                    <th>Élément</th>
+                    <th>Stats</th>
+                    <th>Obtenu</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Algueron</td><td>Vieille lumière - Mendelyo (Marchand)</td><td>Glace</td><td>Vitalité/Luck</td><td><input type="checkbox"></td></tr>
+                <tr><td>Blizzon</td><td>Feuilles ambrées - Ballet chromatique</td><td>Glace</td><td>Chance</td><td><input type="checkbox"></td></tr>
+                <tr><td>Bourgelon</td><td>Marchand de la grotte côtière</td><td>Lumière</td><td>Agilité/Vitalité</td><td><input type="checkbox"></td></tr>
+                <tr><td>Charnon</td><td>Esquisses de Renoir</td><td>Néant</td><td>Défense/Chance</td><td><input type="checkbox"></td></tr>
+                <tr><td>Chation</td><td>Falaise de Rochevague</td><td>Sombre</td><td>Chance/Vitalité</td><td><input type="checkbox"></td></tr>
+                <tr><td>Corderon</td><td>Grotte Sinistre</td><td>Sombre</td><td>Défense/Chance</td><td><input type="checkbox"></td></tr>
+                <tr><td>Direton</td><td>Marchand de feuilles ambrées</td><td>Terre</td><td>Agilité/Défense</td><td><input type="checkbox"></td></tr>
+                <tr><td>Forestion</td><td>Falaise de Rochevague - Jerijeri (Marchand)</td><td>Sombre</td><td>Agilité/Défense</td><td><input type="checkbox"></td></tr>
+                <tr><td>Garganon</td><td>Intérieur du monolithe - Melosh (Marchand)</td><td>Feu</td><td>Vitalité/Défense</td><td><input type="checkbox"></td></tr>
+                <tr><td>Gobluson</td><td>Marchands de la grotte côtière</td><td>Feu</td><td>Défense/Agilité</td><td><input type="checkbox"></td></tr>
+                <tr><td>Guleson</td><td>Sanctuaire de la nuit éternelle</td><td>Foudre</td><td>Agilité/Chance</td><td><input type="checkbox"></td></tr>
+                <tr><td>Hevason</td><td>Village Gestral (Battre Golgra avec Sciel)</td><td>Physique</td><td>Vitalité/Défense</td><td><input type="checkbox"></td></tr>
+                <tr><td>Litheson</td><td>Lumière (Acte 3)</td><td>Physique</td><td>Chance/Agilité</td><td><input type="checkbox"></td></tr>
+                <tr><td>Lustrison</td><td>Terres oubliées - Éclat chromatique</td><td>Sombre</td><td>Vitalité/Agilité</td><td><input type="checkbox"></td></tr>
+                <tr><td>Martenon</td><td>Manoir suspendu</td><td>Terre</td><td>Vitalité/Agilité</td><td><input type="checkbox"></td></tr>
+                <tr><td>Minason</td><td>Les corbeaux - Chapelier chromatique</td><td>Physique</td><td>Chance/Vitalité</td><td><input type="checkbox"></td></tr>
+                <tr><td>Moisson</td><td>Moissonneuse chromatique</td><td>Physique</td><td>Agilité/Chance</td><td><input type="checkbox"></td></tr>
+                <tr><td>Ramasson</td><td>Terres oubliées</td><td>Physique</td><td>Chance/Vitalité</td><td><input type="checkbox"></td></tr>
+                <tr><td>Scielson</td><td>Arme de départ</td><td>Physique</td><td>Agilité/Chance</td><td><input type="checkbox"></td></tr>
+                <tr><td>Tisseron</td><td>Sirène</td><td>Foudre</td><td>Agilité/Défense</td><td><input type="checkbox"></td></tr>
+                <tr><td>Triston</td><td>Visages - Blurraga (Marchand)</td><td>Lumière</td><td>Agilité/Défense</td><td><input type="checkbox"></td></tr>
+            </tbody>
+        </table>
+    </main>
+    <footer>
+        <p>&copy; 2025 Zatsu - Clair Obscur : Expédition 33 Ressources FR</p>
+    </footer>
+    <script>
+        // Sauvegarde l'état des cases à cocher dans le localStorage
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const pageKey = window.location.pathname.split('/').pop(); // Récupère le nom du fichier HTML
+            checkboxes.forEach((checkbox, index) => {
+                const savedState = localStorage.getItem(`${pageKey}-checkbox-${index}`);
+                if (savedState === 'true') {
+                    checkbox.checked = true;
+                }
+                checkbox.addEventListener('change', () => {
+                    localStorage.setItem(`${pageKey}-checkbox-${index}`, checkbox.checked);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
