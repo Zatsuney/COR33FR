@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestrals Perdus</title>
+    <link rel="stylesheet" href="../styles/style.css"> <!-- Lien vers une feuille de style si nécessaire -->
+</head>
+<body>
+    <header>
+    </header>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="armes.html">Armes</a></li>
+                    <li><a href="competences-de-monoco.html">Compétences de Monoco</a></li>
+                    <li><a href="disques.html">Disques</a></li>
+                    <li><a href="pictos.html">Pictos</a></li>
+                    <li><a href="tenues.html">Tenues</a></li>
+                    <li><a href="questitem.html">Objet de quête</a></li>
+                    <li><a href="lostgestral.html" class="active">Gestrals Perdus</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <section class="quest-items">
+                <h1>Gestrals Perdus</h1>
+                <p>Voici la liste et l'emplacement des Gestrals Perdus</p>
+            </section>
+        </main>
+    <main>
+        <section class="quest-items">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Zone</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="../images/gestral1.png" alt="Description de l'image 1" width="100" class="zoomable" onclick="openImage(this)"></td>
+                        <td>Arbre Blanc</td>
+                        <td>Partie Ouest de l'île</td>
+                    </tr>
+                    <tr>
+                        <td><img src="../images/gestral2.png" alt="Description de l'image 2" width="100" class="zoomable" onclick="openImage(this)"></td>
+                        <td>Continent - Entrée des Falaises de Rochevague</td>
+                        <td>Le Gestral est bloqué par un Bourgeon que vous devrez vaincre avant de le récupéré</td>
+                    </tr>
+                    <tr>
+                        <td><img src="../images/gestral3.png" alt="Description de l'image 3" width="100" class="zoomable" onclick="openImage(this)"></td>
+                        <td>Devant le Nid d'Esquie</td>
+                        <td>Il est devant, vraiment JUSTE devant VOUS !</td>
+                    </tr>
+                    <tr>
+                        <td><img src="../images/gestral4.png" alt="Description de l'image 3" width="100" class="zoomable" onclick="openImage(this)"></td>
+                        <td>Sur une île dans le ciel au sud de la Tour Eternelle</td>
+                        <td>Il n'est pas facile à trouver, et vous aurez besoin du Vol d'Esquie afin de le récupéré</td>
+                    </tr>
+                    <tr>
+                        <td><img src="../images/gestral5.png" alt="Description de l'image 3" width="100" class="zoomable" onclick="openImage(this)"></td>
+                        <td>Gare de Monoco</td>
+                        <td>Pas loin du marchand à l'ouest de l'entrée</td>
+                    </tr>
+                    <tr>
+                        <td><img src="../images/gestral6.png" alt="Description de l'image 3" width="100" class="zoomable" onclick="openImage(this)"></td>
+                        <td>Zone Cramoisie à l'est du continent</td>
+                        <td>La zone est proche du Sanctuaire de la nuit éternel</td>
+                    </tr>
+                    <tr>
+                        <td><img src="../images/gestral7.png" alt="Description de l'image 3" width="100" class="zoomable" onclick="openImage(this)"></td>
+                        <td>Nord-Ouest du Continent</td>
+                        <td>Au Sud de Visages sur uen île cramoisie caché dérriere deux mimes</td>
+                    </tr>
+                    <tr>
+                        <td><img src="../images/gestral8.png" alt="Description de l'image 3" width="100" class="zoomable" onclick="openImage(this)"></td>
+                        <td>Continent</td>
+                        <td>Il est proche du Gestral N°7, un peu au Nord de celui ci, à côté d'un marchand</td>
+                    </tr>
+                    <tr>
+                        <td><img src="../images/gestral9.png" alt="Description de l'image 3" width="100" class="zoomable" onclick="openImage(this)"></td>
+                        <td>Est de la Gare de Monoco</td>
+                        <td>Au nord de l'île orangée</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Zatsu - Clair Obscur : Expédition 33 Ressources FR</p>
+    </footer>
+    <script>
+        function openImage(imgElement) {
+            // Crée une div pour afficher l'image en grand
+            const overlay = document.createElement('div');
+            overlay.classList.add('fullscreen-overlay');
+            overlay.onclick = () => document.body.removeChild(overlay); // Ferme l'image en cliquant sur l'overlay
+
+            // Crée une copie de l'image
+            const img = document.createElement('img');
+            img.src = imgElement.src;
+            overlay.appendChild(img);
+
+            // Ajoute l'overlay au body
+            document.body.appendChild(overlay);
+        }
+    </script>
+</body>
+</html>
