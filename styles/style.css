@@ -109,3 +109,35 @@ th {
 tr:nth-child(even) {
     background-color: #1e1e1e;
 }
+
+.zoomable {
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.zoomable:hover {
+    transform: scale(1.2); /* Zoom au survol */
+}
+
+/* Style pour l'image en grand */
+.fullscreen-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.fullscreen-overlay img {
+    max-width: 90%;
+    max-height: 90%;
+    border: 2px solid white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+}
