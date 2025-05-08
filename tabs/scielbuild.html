@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sciel Build</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <style>
+        h1 {
+            text-align: center;
+        }
+        .header-image {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="../images/title.png" alt="Clair Obscur Ressources FR" class="header-image">
+        <h1>Ajouter un Build pour Sciel</h1>
+    </header>
+    <main>
+        <form id="build-form">
+            <label for="name">Nom du Build :</label>
+            <input type="text" id="name" name="name" maxlength="20" required><br><br>
+
+            <label for="description">Description :</label>
+            <textarea id="description" name="description" rows="4" maxlength="60" required></textarea><br><br>
+
+            <label for="skills1">Picto 1 :</label>
+            <input type="text" id="skills1" name="skills1" list="pictos-list" required><br><br>
+
+            <label for="skills2">Picto 2 :</label>
+            <input type="text" id="skills2" name="skills2" list="pictos-list" required><br><br>
+
+            <label for="skills3">Picto 3 :</label>
+            <input type="text" id="skills3" name="skills3" list="pictos-list" required><br><br>
+
+            <label for="weapons">Armes :</label>
+            <input type="text" id="weapons" name="weapons" list="weapons-list" required><br><br>
+
+            <button type="submit">Soumettre</button>
+        </form>
+
+        <datalist id="pictos-list">
+            <!-- Les options des pictos seront ajoutées dynamiquement -->
+        </datalist>
+
+        <datalist id="weapons-list">
+            <!-- Les options des armes seront ajoutées dynamiquement -->
+        </datalist>
+    </main>
+    <script src="../scripts/scielbuild.js"></script>
+</body>
+</html>

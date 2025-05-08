@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monoco Build</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <style>
+        h1 {
+            text-align: center;
+        }
+        .header-image {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="../images/title.png" alt="Clair Obscur Ressources FR" class="header-image">
+        <h1>Ajouter un Build pour Monoco</h1>
+    </header>
+    <main>
+        <form id="build-form">
+            <label for="name">Nom du Build :</label>
+            <input type="text" id="name" name="name" maxlength="20" required><br><br>
+
+            <label for="description">Description :</label>
+            <textarea id="description" name="description" rows="4" maxlength="60" required></textarea><br><br>
+
+            <label for="skills1">Picto 1 :</label>
+            <input type="text" id="skills1" name="skills1" list="pictos-list" required><br><br>
+
+            <label for="skills2">Picto 2 :</label>
+            <input type="text" id="skills2" name="skills2" list="pictos-list" required><br><br>
+
+            <label for="skills3">Picto 3 :</label>
+            <input type="text" id="skills3" name="skills3" list="pictos-list" required><br><br>
+
+            <label for="weapons">Armes :</label>
+            <input type="text" id="weapons" name="weapons" list="weapons-list" required><br><br>
+
+            <button type="submit">Soumettre</button>
+        </form>
+
+        <datalist id="pictos-list">
+            <!-- Les options des pictos seront ajoutées dynamiquement -->
+        </datalist>
+
+        <datalist id="weapons-list">
+            <!-- Les options des armes seront ajoutées dynamiquement -->
+        </datalist>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Charger les options des Pictos depuis pictos.html
+            fetch('../tabs/pictos.html')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Erreur HTTP : ${response.status}`);
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(data, 'text/html');
+                    const pictos = Array.from(doc.querySelectorAll('.picto-name')).map(el => el.textContent);
+
+                    const datalistPictos = document.getElementById('pictos-list');
+                    pictos.forEach(picto => {
+                        const option = document.createElement('option');
+                        option.value = picto;
+                        datalistPictos.appendChild(option);
+                    });
+                })
+                .catch(error => console.error('Erreur lors du chargement des Pictos :', error));
+
+            // Charger les options des Armes depuis monoco.html
+            fetch('../tabs/monoco.html')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Erreur HTTP : ${response.status}`);
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(data, 'text/html');
+                    const weapons = Array.from(doc.querySelectorAll('.weapon-name')).map(el => el.textContent);
+
+                    const datalistWeapons = document.getElementById('weapons-list');
+                    weapons.forEach(weapon => {
+                        const option = document.createElement('option');
+                        option.value = weapon;
+                        datalistWeapons.appendChild(option);
+                    });
+                })
+                .catch(error => console.error('Erreur lors du chargement des Armes :', error));
+        });
+
+        document.getElementById('build-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const description = document.getElementById('description').value;
+            const skills1 = document.getElementById('skills1').value;
+            const skills2 = document.getElementById('skills2').value;
+            const skills3 = document.getElementById('skills3').value;
+            const weapons = document.getElementById('weapons').value;
+
+            const build = {
+                name,
+                description,
+                skills: [skills1, skills2, skills3],
+                weapons,
+                category: 'Monoco'
+            };
+
+            const builds = JSON.parse(localStorage.getItem('builds')) || [];
+            builds.push(build);
+            localStorage.setItem('builds', JSON.stringify(builds));
+
+            document.getElementById('build-form').reset();
+            alert('Build enregistré avec succès dans la catégorie Monoco !');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Builds</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <style>
+        h1 {
+            text-align: center;
+        }
+        .header-image {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="../images/title.png" alt="Clair Obscur Ressources FR" class="header-image">
+        <h1>Liste des Builds</h1>
+    </header>
+    <main>
+        <!-- Section pour la catégorie Maelle -->
+        <section id="build-list-maelle">
+            <h2>Builds enregistrés</h2>
+            <h3>Maelle</h3>
+            <table id="maelle-builds" border="1">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Description</th>
+                        <th>Pictos</th>
+                        <th>Armes</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Les builds de la catégorie Maelle seront affichés ici -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Section pour la catégorie Gustave/Verso -->
+        <section id="build-list-gustave">
+            <h3>Gustave/Verso</h3>
+            <table id="gustave-builds" border="1">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Description</th>
+                        <th>Pictos</th>
+                        <th>Armes</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Les builds de la catégorie Gustave/Verso seront affichés ici -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Section pour la catégorie Lune -->
+        <section id="build-list-lune">
+            <h3>Lune</h3>
+            <table id="lune-builds" border="1">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Description</th>
+                        <th>Pictos</th>
+                        <th>Armes</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Les builds de la catégorie Lune seront affichés ici -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Section pour la catégorie Sciel -->
+        <section id="build-list-sciel">
+            <h3>Sciel</h3>
+            <table id="sciel-builds" border="1">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Description</th>
+                        <th>Pictos</th>
+                        <th>Armes</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Les builds de la catégorie Sciel seront affichés ici -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Section pour la catégorie Monoco -->
+        <section id="build-list-monoco">
+            <h3>Monoco</h3>
+            <table id="monoco-builds" border="1">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Description</th>
+                        <th>Pictos</th>
+                        <th>Armes</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Les builds de la catégorie Monoco seront affichés ici -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <script>
+        // Récupérer les builds depuis localStorage
+        let builds = JSON.parse(localStorage.getItem('builds')) || [];
+
+        // Sélectionner les éléments des tableaux pour les catégories
+        const maelleBuildTable = document.querySelector('#maelle-builds tbody');
+        const gustaveBuildTable = document.querySelector('#gustave-builds tbody');
+        const luneBuildTable = document.querySelector('#lune-builds tbody');
+        const scielBuildTable = document.querySelector('#sciel-builds tbody');
+        const monocoBuildTable = document.querySelector('#monoco-builds tbody');
+
+        // Fonction pour afficher les builds d'une catégorie
+        function renderBuilds() {
+            // Réinitialiser les tableaux
+            maelleBuildTable.innerHTML = '';
+            gustaveBuildTable.innerHTML = '';
+            luneBuildTable.innerHTML = '';
+            scielBuildTable.innerHTML = '';
+            monocoBuildTable.innerHTML = '';
+
+            // Afficher les builds de la catégorie Maelle
+            builds
+                .filter(build => build.category === 'Maelle')
+                .forEach((build, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${build.name}</td>
+                        <td>${build.description}</td>
+                        <td>${build.skills.join(', ')}</td>
+                        <td>${build.weapons}</td>
+                        <td>
+                            <button class="delete-build" data-index="${index}">🗑</button>
+                        </td>
+                    `;
+                    maelleBuildTable.appendChild(row);
+                });
+
+            // Afficher les builds de la catégorie Gustave/Verso
+            builds
+                .filter(build => build.category === 'Gustave/Verso') // Filtrer par catégorie Gustave/Verso
+                .forEach((build, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${build.name}</td>
+                        <td>${build.description}</td>
+                        <td>${build.skills.join(', ')}</td>
+                        <td>${build.weapons}</td>
+                        <td>
+                            <button class="delete-build" data-index="${index}">🗑</button>
+                        </td>
+                    `;
+                    gustaveBuildTable.appendChild(row);
+                });
+
+            // Afficher les builds de la catégorie Lune
+            builds
+                .filter(build => build.category === 'Lune')
+                .forEach((build, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${build.name}</td>
+                        <td>${build.description}</td>
+                        <td>${build.skills.join(', ')}</td>
+                        <td>${build.weapons}</td>
+                        <td>
+                            <button class="delete-build" data-index="${index}">🗑</button>
+                        </td>
+                    `;
+                    luneBuildTable.appendChild(row);
+                });
+
+            // Afficher les builds de la catégorie Sciel
+            builds
+                .filter(build => build.category === 'Sciel')
+                .forEach((build, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${build.name}</td>
+                        <td>${build.description}</td>
+                        <td>${build.skills.join(', ')}</td>
+                        <td>${build.weapons}</td>
+                        <td>
+                            <button class="delete-build" data-index="${index}">🗑</button>
+                        </td>
+                    `;
+                    scielBuildTable.appendChild(row);
+                });
+
+            // Afficher les builds de la catégorie Monoco
+            builds
+                .filter(build => build.category === 'Monoco')
+                .forEach((build, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${build.name}</td>
+                        <td>${build.description}</td>
+                        <td>${build.skills.join(', ')}</td>
+                        <td>${build.weapons}</td>
+                        <td>
+                            <button class="delete-build" data-index="${index}">🗑</button>
+                        </td>
+                    `;
+                    monocoBuildTable.appendChild(row);
+                });
+
+            // Ajouter un gestionnaire d'événements pour les boutons de suppression
+            document.querySelectorAll('.delete-build').forEach(button => {
+                button.addEventListener('click', function () {
+                    // Vérification d'autorisation
+                    const password = prompt('Entrez le mot de passe administrateur pour supprimer ce build :');
+                    if (password === 'zatsu') { // Remplacez 'zatsu' par votre mot de passe sécurisé
+                        const index = this.getAttribute('data-index');
+                        builds.splice(index, 1); // Supprimer le build de la liste
+                        localStorage.setItem('builds', JSON.stringify(builds)); // Mettre à jour localStorage
+                        alert('Build supprimé avec succès.');
+                        renderBuilds(); // Mettre à jour les tableaux sans recharger la page
+                    } else {
+                        alert('Mot de passe incorrect. Suppression annulée.');
+                    }
+                });
+            });
+        }
+
+        // Initialiser l'affichage des builds
+        renderBuilds();
+    </script>
+</body>
+</html>
