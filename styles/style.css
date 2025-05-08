@@ -266,3 +266,74 @@ form textarea {
     resize: vertical; /* Permet de redimensionner verticalement */
     height: 60px; /* Hauteur par défaut */
 }
+
+/* Ajoute ceci dans <style> ou dans style.css */
+@media (max-width: 800px) {
+  body {
+    padding: 0 2vw;
+    font-size: 1.05em;
+  }
+  header, nav, main, section {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  nav ul {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0;
+  }
+  nav ul li {
+    width: 100%;
+    margin: 0.2em 0;
+  }
+  .header-image {
+    max-width: 95vw;
+    height: auto;
+  }
+  table {
+    width: 100%;
+    font-size: 0.95em;
+    overflow-x: auto;
+    display: block;
+  }
+  th, td {
+    padding: 0.4em 0.2em;
+    word-break: break-word;
+  }
+  h1, h2, h3 {
+    font-size: 1.2em;
+    text-align: center;
+  }
+  .dropdown-menu {
+    position: static;
+    width: 100%;
+  }
+}
+
+/* Pour les très petits écrans */
+@media (max-width: 500px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+    width: 100%;
+  }
+  thead {
+    display: none;
+  }
+  tr {
+    margin-bottom: 1em;
+    border-bottom: 1px solid #ccc;
+  }
+  td {
+    text-align: left;
+    padding-left: 40%;
+    position: relative;
+  }
+  td:before {
+    position: absolute;
+    left: 0.5em;
+    width: 38%;
+    white-space: nowrap;
+    font-weight: bold;
+    content: attr(data-label);
+  }
+}
