@@ -352,18 +352,28 @@ nav .menu-toggle {
 }
 
 @media (max-width: 900px) {
-  nav ul {
-    display: none;
-    flex-direction: column;
-    background: #181818;
-    position: absolute;
-    top: 60px; /* adapte selon la hauteur de ton header */
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-  }
-  nav ul.open {
-    display: flex;
+    .menu-toggle {
+        display: block;
+    }
+    nav ul {
+        display: none;
+        flex-direction: column;
+        background: #181818;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100vw;
+        border-bottom: 2px solid #2a2a2a;
+        z-index: 1000;
+    }
+    nav ul.open {
+        display: flex;
+    }
+    nav ul li {
+        margin: 10px 0;
+        text-align: center;
+    }
+}
   }
   nav .menu-toggle {
     display: block;
@@ -371,5 +381,10 @@ nav .menu-toggle {
     right: 1em;
     top: 0.7em;
   }
+}
+@media (min-width: 901px) {
+    .menu-toggle {
+        display: none;
+    }
 }
 
