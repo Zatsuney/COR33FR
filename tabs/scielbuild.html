@@ -85,5 +85,76 @@
         </datalist>
     </main>
     <script src="../scripts/scielbuild.js"></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
+        import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAnVOPY9sF5Hdo0Pr_wnLHHzGodMu8m5Kk",
+            authDomain: "cor33fr-6d60b.firebaseapp.com",
+            projectId: "cor33fr-6d60b",
+            storageBucket: "cor33fr-6d60b.appspot.com",
+            messagingSenderId: "155454546374",
+            appId: "1:155454546374:web:9ad2b70565a890b04712c7",
+            measurementId: "G-6Q5NJ8533G",
+            databaseURL: "https://cor33fr-6d60b-default-rtdb.europe-west1.firebasedatabase.app/"
+        };
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        // Chargement dynamique des pictos
+        fetch('../tabs/pictos.html')
+            .then(response => response.text())
+            .then(data => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(data, 'text/html');
+                const pictos = Array.from(doc.querySelectorAll('.picto-name')).map(el => el.textContent);
+                const datalistPictos = document.getElementById('pictos-list');
+                pictos.forEach(picto => {
+                    const option = document.createElement('option');
+                    option.value = picto;
+                    datalistPictos.appendChild(option);
+                });
+            })
+            .catch(error => console.error('Erreur lors du chargement des Pictos :', error));
+
+        // Chargement dynamique des armes
+        fetch('../tabs/sciel.html')
+            .then(response => response.text())
+            .then(data => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(data, 'text/html');
+                const weapons = Array.from(doc.querySelectorAll('.weapon-name')).map(el => el.textContent);
+                const datalistWeapons = document.getElementById('weapons-list');
+                weapons.forEach(weapon => {
+                    const option = document.createElement('option');
+                    option.value = weapon;
+                    datalistWeapons.appendChild(option);
+                });
+            })
+            .catch(error => console.error('Erreur lors du chargement des Armes :', error));
+
+        // Enregistrement du build dans Firebase
+        document.getElementById('build-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const build = {
+                name: document.getElementById('name').value,
+                description: document.getElementById('description').value,
+                skills: [
+                    document.getElementById('skills1').value,
+                    document.getElementById('skills2').value,
+                    document.getElementById('skills3').value
+                ],
+                weapons: document.getElementById('weapons').value,
+                category: 'Sciel'
+            };
+
+            push(ref(db, 'builds'), build).then(() => {
+                alert('Build enregistré avec succès dans la catégorie Sciel !');
+                document.getElementById('build-form').reset();
+            });
+        });
+    </script>
 </body>
 </html>
