@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lune Build</title>
+    <title>Lune</title>
     <link rel="stylesheet" href="../styles/style.css">
-    <style>
+<style>
         h1 {
             text-align: center;
         }
@@ -22,68 +22,86 @@
         <img src="../images/title.png" alt="Clair Obscur Ressources FR" class="header-image">
         <nav>
             <ul>
-                <li><a href="../index.html">Accueil</a></li> <!-- Lien vers la racine -->
-                <li><a href="armes.html">Armes</a></li>
+                <li><a href="armes.html" class="active">Armes</a></li>
                 <li><a href="competences-de-monoco.html">Compétences de Monoco</a></li>
                 <li><a href="disques.html">Disques</a></li>
                 <li><a href="pictos.html">Pictos</a></li>
                 <li><a href="tenues.html">Tenues</a></li>
-                <li><a href="buildlist.html">Liste des Builds</a></li>
-                <!-- Dropdown menu Guides -->
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle">Guides <span class="arrow">&#9662;</span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="journauxexp.html">Journaux d'expéditions</a></li>
-                        <li><a href="questitem.html">Objet de quête</a></li>
-                        <li><a href="lostgestral.html">Gestrals Perdu</a></li>
-                    </ul>
-                </li>
-                <!-- Dropdown menu Build -->
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle">Créer un Build<span class="arrow">&#9662;</span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="gustavebuild.html">Gustave/Verso</a></li>
-                        <li><a href="maellebuild.html">Maelle</a></li>
-                        <li><a href="lunebuild.html">Lune</a></li>
-                        <li><a href="scielbuild.html">Sciel</a></li>
-                        <li><a href="monocobuild.html">Monoco</a></li>
-                    </ul>
-                </li>
+                <li><a href="questitem.html">Objet de quête</a></li>
+                <li><a href="lostgestral.html">Gestrals Perdu</a></li>
             </ul>
         </nav>
-        <h1>Ajouter un Build pour Lune</h1>
     </header>
     <main>
-        <form id="build-form">
-            <label for="name">Nom du Build :</label>
-            <input type="text" id="name" name="name" maxlength="20" required><br><br>
-
-            <label for="description">Description :</label>
-            <textarea id="description" name="description" rows="4" maxlength="60" required></textarea><br><br>
-
-            <label for="skills1">Picto 1 :</label>
-            <input type="text" id="skills1" name="skills1" list="pictos-list" required><br><br>
-
-            <label for="skills2">Picto 2 :</label>
-            <input type="text" id="skills2" name="skills2" list="pictos-list" required><br><br>
-
-            <label for="skills3">Picto 3 :</label>
-            <input type="text" id="skills3" name="skills3" list="pictos-list" required><br><br>
-
-            <label for="weapons">Armes :</label>
-            <input type="text" id="weapons" name="weapons" list="weapons-list" required><br><br>
-
-            <button type="submit">Soumettre</button>
-        </form>
-
-        <datalist id="pictos-list">
-            <!-- Les options des pictos seront ajoutées dynamiquement -->
-        </datalist>
-
-        <datalist id="weapons-list">
-            <!-- Les options des armes seront ajoutées dynamiquement -->
-        </datalist>
+        <h1>Lune</h1>
+        <!-- Sous-onglets -->
+        <nav class="sub-tabs">
+            <ul>
+                <li><a href="gustaveverso.html">Gustave/Verso</a></li>
+                <li><a href="lune.html" class="active">Lune</a></li>
+                <li><a href="maelle.html">Maelle</a></li>
+                <li><a href="monoco.html">Monoco</a></li>
+                <li><a href="sciel.html">Sciel</a></li>
+            </ul>
+        </nav>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Emplacement</th>
+                    <th>Élément</th>
+                    <th>Stats</th>
+                    <th>Obtenu</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><li class="weapon-name">Arbusculim</td><td>Feuilles ambrées</td><td>Foudre</td><td>Défense/Chance</td><td><input type="checkbox"></td></tr>
+                <tr><td><li class="weapon-name">Benisim</td><td>Terres oubliées - Kasumi (marchand)</td><td>Terre</td><td>Vitalité/Défense</td><td><input type="checkbox"></td></tr>
+                <tr><td><li class="weapon-name">Betelim</td><td>Village Gestral</td><td>Terre</td><td>Vitalité/Agilité</td><td><input type="checkbox"></td></tr>
+                <tr><td><li class="weapon-name">Braselim</td><td>Intérieur du monolithe</td><td>Feu</td><td>Chance/Vitalité</td><td><input type="checkbox"></td></tr>
+                <tr><td><li class="weapon-name">Chapelim</td><td>Visages - Joyeuse Moissonneuse</td><td>Terre</td><td>Agilité/Défense</td><td><input type="checkbox"></td></tr>
+                <tr><td><li class="weapon-name">Charorim</td><td>Feuilles Ambrées - Charognard</td><td>Sombre</td><td>Vitalité/Agilité</td><td><input type="checkbox"></td></tr>
+                <tr><td><li class="weapon-name">Choralim</td><td>Dune de Sirène</td><td>Feu</td><td>Défense/Agilité</td><td><input type="checkbox"></td></tr>
+                <tr><td><li class="weapon-name">Colérim</td><td>Démineur chromatique - Continent proche des Terres oubliées</td><td>Feu</td><td>Chance/Défense</td><td><input type="checkbox"></td></tr>
+                <tr><td><li class="weapon-name">Colim</td><td>Sirène</td><td>Lumière</td><td>Vitalité/Agilité</td><td><input type="checkbox"></td></tr>
+                <tr><td><li class="weapon-name">Coraillim</td><td>Falaises de Rochevague - Bâtiments inondés</td><td>Glace</td><td>Défense/Vitalité</td><td><input type="checkbox"></td></tr>
+                <tr><td><li class="weapon-name">Démineurim</td><td>Océan suspendu - Quête secondaire de Démineur</td><td>Foudre</td><td>Chance/Agilité</td><td><input type="checkbox"></td></tr>
+                <tr><td><li class="weapon-name">Elerim</td><td>Grotte sinistre</td><td>Terre</td><td>Vitalité/Défense</td><td><input type="checkbox"></td></tr>
+                <tr><td><li class="weapon-name">Kralim</td><td>Moisson Dorée - Vaincre Orphelin chromatique</td><td>Foudre</td><td>Agilité/Vitalité</td><td><input type="checkbox"></td></tr>
+                <tr><td><li class="weapon-name">Lumerim</td><td>Prairies printanières - Indigotier</td><td>Feu</td><td>Agilité/Défense</td><td><input type="checkbox"></td></tr>
+                <tr><td><li class="weapon-name">Lithelim</td><td>À l'intérieur du monolithe</td><td>Néant</td><td>Vitalité</td><td><input type="checkbox"></td></tr>
+                <tr><td><li class="weapon-name">Lunerim</td><td>Arme de départ</td><td>Feu</td><td>Chance/Vitalité</td><td><input type="checkbox"></td></tr>
+                <tr><td><li class="weapon-name">Neigim</td><td>Cœur ardent - Gargant</td><td>Glace</td><td>Agilité/Vitalité</td><td><input type="checkbox"></td></tr>
+                <tr><td><li class="weapon-name">Potierim</td><td>Moisson Dorée</td><td>Glace</td><td>Agilité/Défense</td><td><input type="checkbox"></td></tr>
+                <tr><td><li class="weapon-name">Redalim</td><td>Vieille Lumière</td><td>Glace</td><td>Défense/Agilité</td><td><input type="checkbox"></td></tr>
+                <tr><td><li class="weapon-name">Souffrerim</td><td>Esquisses de Renoir</td><td>Terre</td><td>Vitalité/Chance</td><td><input type="checkbox"></td></tr>
+                <tr><td><li class="weapon-name">Trebuchim</td><td>Village de Gestral</td><td>Foudre</td><td>Vitalité/Chance</td><td><input type="checkbox"></td></tr>
+                <tr><td><li class="weapon-name">Troubadim</td><td>Océan suspendu - Vaincre Troubadour chromatique</td><td>Physique</td><td>Défense/Vitalité</td><td><input type="checkbox"></td></tr>
+            </tbody>
+        </table>
     </main>
-    <script src="../scripts/lunebuild.js"></script>
+    <footer>
+        <ul>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="mentionlegal.html">Mentions Légales</a></li>
+        </ul>
+        <p>&copy; 2025 Zatsu - Clair Obscur : Expédition 33 Ressources FR</p>
+    </footer>
+    <script>
+        // Sauvegarde l'état des cases à cocher dans le localStorage
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const pageKey = window.location.pathname.split('/').pop(); // Récupère le nom du fichier HTML
+            checkboxes.forEach((checkbox, index) => {
+                const savedState = localStorage.getItem(`${pageKey}-checkbox-${index}`);
+                if (savedState === 'true') {
+                    checkbox.checked = true;
+                }
+                checkbox.addEventListener('change', () => {
+                    localStorage.setItem(`${pageKey}-checkbox-${index}`, checkbox.checked);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
