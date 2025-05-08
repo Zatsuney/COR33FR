@@ -87,6 +87,28 @@ footer {
     font-size: 14px;
 }
 
+footer ul {
+    list-style: none; /* Supprime les puces */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Affiche les éléments sur une seule ligne */
+    justify-content: center; /* Centre les éléments horizontalement */
+    gap: 20px; /* Ajoute un espace entre les liens */
+}
+
+footer ul li {
+    display: inline; /* Affiche les éléments en ligne */
+}
+
+footer ul li a {
+    text-decoration: none; /* Supprime le soulignement des liens */
+    color: #ff6600; /* Couleur des liens */
+}
+
+footer ul li a:hover {
+    text-decoration: underline; /* Ajoute un soulignement au survol */
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
