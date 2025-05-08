@@ -98,6 +98,7 @@ function renderBuilds(builds) {
 onValue(ref(db, 'builds'), snapshot => {
     const builds = [];
     snapshot.forEach(child => builds.push({ key: child.key, ...child.val() }));
+    console.log(builds);
     renderBuilds(builds);
 });
     </script>
