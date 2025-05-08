@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://zatsuney.github.io/COR33FR/sitemap.xml
