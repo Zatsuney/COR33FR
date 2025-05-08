@@ -95,32 +95,44 @@
         fetch('../tabs/pictos.html')
         fetch('../tabs/maelle.html')
     </script>
-""    <script type="module">
-        import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-database.js";
+    <script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
+import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-database.js";
 
-        // ... (après avoir initialisé Firebase comme ci-dessus)
-        const db = getDatabase();
+// Ta config Firebase ici
+const firebaseConfig = {
+  apiKey: "AIzaSyAnVOPY9sF5Hdo0Pr_wnLHHzGodMu8m5Kk",
+  authDomain: "cor33fr-6d60b.firebaseapp.com",
+  projectId: "cor33fr-6d60b",
+  storageBucket: "cor33fr-6d60b.appspot.com",
+  messagingSenderId: "155454546374",
+  appId: "1:155454546374:web:9ad2b70565a890b04712c7",
+  measurementId: "G-6Q5NJ8533G",
+  databaseURL: "https://cor33fr-6d60b-default-rtdb.europe-west1.firebasedatabase.app/"
+};
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
 
-        document.getElementById('build-form').addEventListener('submit', function (e) {
-            e.preventDefault();
+document.getElementById('build-form').addEventListener('submit', function (e) {
+    e.preventDefault();
 
-            const build = {
-                name: document.getElementById('name').value,
-                description: document.getElementById('description').value,
-                skills: [
-                    document.getElementById('skills1').value,
-                    document.getElementById('skills2').value,
-                    document.getElementById('skills3').value
-                ],
-                weapons: document.getElementById('weapons').value,
-                category: 'Maelle' // ou autre selon la page
-            };
+    const build = {
+        name: document.getElementById('name').value,
+        description: document.getElementById('description').value,
+        skills: [
+            document.getElementById('skills1').value,
+            document.getElementById('skills2').value,
+            document.getElementById('skills3').value
+        ],
+        weapons: document.getElementById('weapons').value,
+        category: 'Maelle'
+    };
 
-            push(ref(db, 'builds'), build).then(() => {
-                alert('Build enregistré avec succès !');
-                document.getElementById('build-form').reset();
-            });
-        });
+    push(ref(db, 'builds'), build).then(() => {
+        alert('Build enregistré avec succès !');
+        document.getElementById('build-form').reset();
+    });
+});
     </script>
 </body>
 </html>
