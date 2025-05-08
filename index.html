@@ -68,6 +68,11 @@
         </section>
     </main>
     <script src="scripts/app.js"></script>
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('open');
+        });
+    </script>
     <footer>
         <ul>
             <li><a href="tabs/contact.html">Contact</a></li>
