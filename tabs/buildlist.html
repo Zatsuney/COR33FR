@@ -97,8 +97,11 @@ function renderBuilds(builds) {
 // Écoute les changements en temps réel
 onValue(ref(db, 'builds'), snapshot => {
     const builds = [];
-    snapshot.forEach(child => builds.push({ key: child.key, ...child.val() }));
-    console.log(builds);
+   snapshot.forEach(child => {
+        console.log(child.key, child.val()); // Ajoute ce log
+        builds.push({ key: child.key, ...child.val() });
+    });
+    console.log("builds array:", builds);
     renderBuilds(builds);
 });
     </script>
