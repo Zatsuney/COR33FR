@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+     <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -16,7 +16,6 @@
             height: auto;
         }
     </style>
-    <script src="https://www.gstatic.com/firebasejs/11.7.1/firebase-database.js"></script>
 </head>
 <body>
     <script type="module">
@@ -53,19 +52,26 @@ function renderBuilds(builds) {
 
     // Fonction utilitaire pour chaque catégorie
     function addRows(category, table) {
-        builds.filter(build => build.category === category).forEach(build => {
+        const filtered = builds.filter(build => build.category === category);
+        if (filtered.length === 0) {
             const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${build.name}</td>
-                <td>${build.description}</td>
-                <td>${build.skills ? build.skills.join(', ') : ''}</td>
-                <td>${build.weapons}</td>
-                <td>
-                    <button class="delete-build" data-key="${build.key}">🗑</button>
-                </td>
-            `;
+            row.innerHTML = `<td colspan="5" style="text-align:center;color:#888;">Aucun build</td>`;
             table.appendChild(row);
-        });
+        } else {
+            filtered.forEach(build => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${build.name || ''}</td>
+                    <td>${build.description || ''}</td>
+                    <td>${build.skills ? build.skills.join(', ') : ''}</td>
+                    <td>${build.weapons || ''}</td>
+                    <td>
+                        <button class="delete-build" data-key="${build.key}">🗑</button>
+                    </td>
+                `;
+                table.appendChild(row);
+            });
+        }
     }
 
     addRows('Maelle', maelleBuildTable);
@@ -94,10 +100,10 @@ onValue(ref(db, 'builds'), snapshot => {
     snapshot.forEach(child => builds.push({ key: child.key, ...child.val() }));
     renderBuilds(builds);
 });
-</script>
+    </script>
     <header>
         <img src="../images/title.png" alt="Clair Obscur Ressources FR" class="header-image">
-        <nav>
+         <nav>
             <ul>
                 <li><a href="../index.html">Accueil</a></li> <!-- Lien vers la racine -->
                 <li><a href="armes.html">Armes</a></li>
