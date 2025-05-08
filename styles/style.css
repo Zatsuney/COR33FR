@@ -21,11 +21,13 @@ header {
 
 /* Style pour le menu de navigation */
 nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     list-style: none;
     padding: 0;
     margin: 0;
-    display: flex;
-    justify-content: center;
 }
 
 nav ul li {
@@ -337,3 +339,37 @@ form textarea {
     content: attr(data-label);
   }
 }
+
+/* Responsive nav */
+nav .menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2em;
+  color: #ff6600;
+  cursor: pointer;
+  margin: 0.5em 1em 0.5em 0;
+}
+
+@media (max-width: 900px) {
+  nav ul {
+    display: none;
+    flex-direction: column;
+    background: #181818;
+    position: absolute;
+    top: 60px; /* adapte selon la hauteur de ton header */
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+  nav ul.open {
+    display: flex;
+  }
+  nav .menu-toggle {
+    display: block;
+    position: absolute;
+    right: 1em;
+    top: 0.7em;
+  }
+}
+
