@@ -16,41 +16,87 @@
             height: auto;
         }
     </style>
+    <script src="https://www.gstatic.com/firebasejs/11.7.1/firebase-database.js"></script>
 </head>
 <body>
+    <script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
+import { getDatabase, ref, onValue, remove } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAnVOPY9sF5Hdo0Pr_wnLHHzGodMu8m5Kk",
+  authDomain: "cor33fr-6d60b.firebaseapp.com",
+  projectId: "cor33fr-6d60b",
+  storageBucket: "cor33fr-6d60b.appspot.com",
+  messagingSenderId: "155454546374",
+  appId: "1:155454546374:web:9ad2b70565a890b04712c7",
+  measurementId: "G-6Q5NJ8533G",
+  databaseURL: "https://cor33fr-6d60b-default-rtdb.europe-west1.firebasedatabase.app/"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+const maelleBuildTable = document.querySelector('#maelle-builds tbody');
+const gustaveBuildTable = document.querySelector('#gustave-builds tbody');
+const luneBuildTable = document.querySelector('#lune-builds tbody');
+const scielBuildTable = document.querySelector('#sciel-builds tbody');
+const monocoBuildTable = document.querySelector('#monoco-builds tbody');
+
+function renderBuilds(builds) {
+    // Réinitialiser les tableaux
+    maelleBuildTable.innerHTML = '';
+    gustaveBuildTable.innerHTML = '';
+    luneBuildTable.innerHTML = '';
+    scielBuildTable.innerHTML = '';
+    monocoBuildTable.innerHTML = '';
+
+    // Fonction utilitaire pour chaque catégorie
+    function addRows(category, table) {
+        builds.filter(build => build.category === category).forEach(build => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${build.name}</td>
+                <td>${build.description}</td>
+                <td>${build.skills ? build.skills.join(', ') : ''}</td>
+                <td>${build.weapons}</td>
+                <td>
+                    <button class="delete-build" data-key="${build.key}">🗑</button>
+                </td>
+            `;
+            table.appendChild(row);
+        });
+    }
+
+    addRows('Maelle', maelleBuildTable);
+    addRows('Gustave/Verso', gustaveBuildTable);
+    addRows('Lune', luneBuildTable);
+    addRows('Sciel', scielBuildTable);
+    addRows('Monoco', monocoBuildTable);
+
+    // Suppression
+    document.querySelectorAll('.delete-build').forEach(button => {
+        button.addEventListener('click', function () {
+            const password = prompt('Entrez le mot de passe administrateur pour supprimer ce build :');
+            if (password === 'zatsu') {
+                const key = this.getAttribute('data-key');
+                remove(ref(db, 'builds/' + key));
+            } else {
+                alert('Mot de passe incorrect. Suppression annulée.');
+            }
+        });
+    });
+}
+
+// Écoute les changements en temps réel
+onValue(ref(db, 'builds'), snapshot => {
+    const builds = [];
+    snapshot.forEach(child => builds.push({ key: child.key, ...child.val() }));
+    renderBuilds(builds);
+});
+</script>
     <header>
         <img src="../images/title.png" alt="Clair Obscur Ressources FR" class="header-image">
-        <nav>
-            <ul>
-                <li><a href="../index.html">Accueil</a></li> <!-- Lien vers la racine -->
-                <li><a href="armes.html">Armes</a></li>
-                <li><a href="competences-de-monoco.html">Compétences de Monoco</a></li>
-                <li><a href="disques.html">Disques</a></li>
-                <li><a href="pictos.html">Pictos</a></li>
-                <li><a href="tenues.html">Tenues</a></li>
-                <li><a href="buildlist.html" class="active">Liste des Builds</a></li>
-                <!-- Dropdown menu Guides -->
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle">Guides <span class="arrow">&#9662;</span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="journauxexp.html">Journaux d'expéditions</a></li>
-                        <li><a href="questitem.html">Objet de quête</a></li>
-                        <li><a href="lostgestral.html">Gestrals Perdu</a></li>
-                    </ul>
-                </li>
-                <!-- Dropdown menu Build -->
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle">Créer un Build<span class="arrow">&#9662;</span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="gustavebuild.html">Gustave/Verso</a></li>
-                        <li><a href="maellebuild.html">Maelle</a></li>
-                        <li><a href="lunebuild.html">Lune</a></li>
-                        <li><a href="scielbuild.html">Sciel</a></li>
-                        <li><a href="monocobuild.html">Monoco</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
         <h1>Liste des Builds</h1>
     </header>
     <main>
@@ -150,131 +196,5 @@
             </table>
         </section>
     </main>
-    <script>
-        // Récupérer les builds depuis localStorage
-        let builds = JSON.parse(localStorage.getItem('builds')) || [];
-
-        // Sélectionner les éléments des tableaux pour les catégories
-        const maelleBuildTable = document.querySelector('#maelle-builds tbody');
-        const gustaveBuildTable = document.querySelector('#gustave-builds tbody');
-        const luneBuildTable = document.querySelector('#lune-builds tbody');
-        const scielBuildTable = document.querySelector('#sciel-builds tbody');
-        const monocoBuildTable = document.querySelector('#monoco-builds tbody');
-
-        // Fonction pour afficher les builds d'une catégorie
-        function renderBuilds() {
-            // Réinitialiser les tableaux
-            maelleBuildTable.innerHTML = '';
-            gustaveBuildTable.innerHTML = '';
-            luneBuildTable.innerHTML = '';
-            scielBuildTable.innerHTML = '';
-            monocoBuildTable.innerHTML = '';
-
-            // Afficher les builds de la catégorie Maelle
-            builds
-                .filter(build => build.category === 'Maelle')
-                .forEach((build, index) => {
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td>${build.name}</td>
-                        <td>${build.description}</td>
-                        <td>${build.skills.join(', ')}</td>
-                        <td>${build.weapons}</td>
-                        <td>
-                            <button class="delete-build" data-index="${index}">🗑</button>
-                        </td>
-                    `;
-                    maelleBuildTable.appendChild(row);
-                });
-
-            // Afficher les builds de la catégorie Gustave/Verso
-            builds
-                .filter(build => build.category === 'Gustave/Verso') // Filtrer par catégorie Gustave/Verso
-                .forEach((build, index) => {
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td>${build.name}</td>
-                        <td>${build.description}</td>
-                        <td>${build.skills.join(', ')}</td>
-                        <td>${build.weapons}</td>
-                        <td>
-                            <button class="delete-build" data-index="${index}">🗑</button>
-                        </td>
-                    `;
-                    gustaveBuildTable.appendChild(row);
-                });
-
-            // Afficher les builds de la catégorie Lune
-            builds
-                .filter(build => build.category === 'Lune')
-                .forEach((build, index) => {
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td>${build.name}</td>
-                        <td>${build.description}</td>
-                        <td>${build.skills.join(', ')}</td>
-                        <td>${build.weapons}</td>
-                        <td>
-                            <button class="delete-build" data-index="${index}">🗑</button>
-                        </td>
-                    `;
-                    luneBuildTable.appendChild(row);
-                });
-
-            // Afficher les builds de la catégorie Sciel
-            builds
-                .filter(build => build.category === 'Sciel')
-                .forEach((build, index) => {
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td>${build.name}</td>
-                        <td>${build.description}</td>
-                        <td>${build.skills.join(', ')}</td>
-                        <td>${build.weapons}</td>
-                        <td>
-                            <button class="delete-build" data-index="${index}">🗑</button>
-                        </td>
-                    `;
-                    scielBuildTable.appendChild(row);
-                });
-
-            // Afficher les builds de la catégorie Monoco
-            builds
-                .filter(build => build.category === 'Monoco')
-                .forEach((build, index) => {
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td>${build.name}</td>
-                        <td>${build.description}</td>
-                        <td>${build.skills.join(', ')}</td>
-                        <td>${build.weapons}</td>
-                        <td>
-                            <button class="delete-build" data-index="${index}">🗑</button>
-                        </td>
-                    `;
-                    monocoBuildTable.appendChild(row);
-                });
-
-            // Ajouter un gestionnaire d'événements pour les boutons de suppression
-            document.querySelectorAll('.delete-build').forEach(button => {
-                button.addEventListener('click', function () {
-                    // Vérification d'autorisation
-                    const password = prompt('Entrez le mot de passe administrateur pour supprimer ce build :');
-                    if (password === 'zatsu') { // Remplacez 'zatsu' par votre mot de passe sécurisé
-                        const index = this.getAttribute('data-index');
-                        builds.splice(index, 1); // Supprimer le build de la liste
-                        localStorage.setItem('builds', JSON.stringify(builds)); // Mettre à jour localStorage
-                        alert('Build supprimé avec succès.');
-                        renderBuilds(); // Mettre à jour les tableaux sans recharger la page
-                    } else {
-                        alert('Mot de passe incorrect. Suppression annulée.');
-                    }
-                });
-            });
-        }
-
-        // Initialiser l'affichage des builds
-        renderBuilds();
-    </script>
 </body>
 </html>
