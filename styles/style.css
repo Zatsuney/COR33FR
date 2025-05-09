@@ -673,3 +673,41 @@ nav ul.open + .menu-close {
 nav ul.open ~ .menu-toggle {
     display: none; /* Masquer lorsque le menu est ouvert */
 }
+
+/* Styles pour le menu déroulant sur PC */
+nav ul .dropdown-menu {
+    display: none; /* Masquer le menu par défaut */
+    position: absolute;
+    background-color: #181818;
+    padding: 10px;
+    list-style: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    min-width: 200px; /* Largeur minimale pour éviter que le texte soit coupé */
+    white-space: wrap; /* Empêche le texte de passer à la ligne */
+}
+
+nav ul .dropdown:hover .dropdown-menu {
+    display: block; /* Afficher le menu au survol */
+}
+
+nav ul .dropdown-menu li {
+    margin: 5px 0;
+}
+
+nav ul .dropdown-menu a {
+    color: #fff;
+    text-decoration: none;
+    display: block; /* Assure que les liens occupent toute la largeur */
+    padding: 5px 10px; /* Ajoute un espacement intérieur pour plus de lisibilité */
+}
+
+nav ul .dropdown-menu a:hover {
+    text-decoration: underline;
+    background-color: #333; /* Ajoute un fond au survol pour plus de visibilité */
+}
+
+/* Assurez-vous que le parent .dropdown est positionné correctement */
+nav ul .dropdown {
+    position: relative;
+}
