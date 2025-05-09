@@ -658,3 +658,18 @@ nav ul.open .menu-close {
         border-top: 2px solid #2a2a2a; /* Bordure supérieure */
     }
 }
+
+/* Masquer le bouton "Fermer" par défaut */
+.menu-close {
+    display: none; /* Masquer par défaut */
+}
+
+/* Afficher le bouton "Fermer" uniquement lorsque le menu est ouvert */
+nav ul.open + .menu-close {
+    display: block; /* Afficher lorsque le menu est ouvert */
+}
+
+/* Masquer le bouton "Menu" lorsque le menu est ouvert */
+nav ul.open ~ .menu-toggle {
+    display: none; /* Masquer lorsque le menu est ouvert */
+}
