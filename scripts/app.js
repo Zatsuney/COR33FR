@@ -20,15 +20,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuClose = document.querySelector('.menu-close');
     const navMenu = document.querySelector('nav ul');
 
-    if (menuToggle && navMenu) {
+    if (menuToggle && menuClose && navMenu) {
         // Ouvrir le menu
         menuToggle.addEventListener('click', function () {
             navMenu.classList.add('open');
+            menuToggle.style.display = 'none'; // Masquer le bouton "Menu"
+            menuClose.style.display = 'block'; // Afficher le bouton "Fermer"
         });
 
         // Fermer le menu
         menuClose.addEventListener('click', function () {
             navMenu.classList.remove('open');
+            menuToggle.style.display = 'block'; // Afficher le bouton "Menu"
+            menuClose.style.display = 'none'; // Masquer le bouton "Fermer"
         });
     } else {
         console.error('Menu toggle, menu close, or nav menu not found');
