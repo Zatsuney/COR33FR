@@ -8,10 +8,6 @@ body {
     text-align: left;
 }
 
-body, #build-list, #build-list ul, #build-list li {
-    text-align: left;
-}
-
 /* Style pour le header */
 header {
     background-color: #121212;
@@ -21,18 +17,30 @@ header {
 
 /* Style pour le menu de navigation */
 nav ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    display: none; /* Masquer le menu par défaut */
+    flex-direction: column;
+    background-color: #181818;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    list-style: none; /* Supprime les puces */
+    padding: 0; /* Supprime le padding par défaut */
+    margin: 0; /* Supprime la marge par défaut */
+}
+
+nav ul.open {
+    display: flex !important; /* Afficher le menu lorsqu'il est ouvert */
 }
 
 nav ul li {
-    position: relative;
-    margin: 0 20px;
+    margin: 10px 0;
+    text-align: center;
+    display: inline-block; /* Affiche les éléments en ligne */
+    margin: 0 15px; /* Ajoute un espacement horizontal entre les éléments */
+    text-align: center; /* Centre le texte */
 }
 
 nav ul li a {
@@ -144,6 +152,7 @@ footer ul {
     display: flex; /* Affiche les éléments sur une seule ligne */
     justify-content: center; /* Centre les éléments horizontalement */
     gap: 20px; /* Ajoute un espace entre les liens */
+    text-align: center; /* Centre le texte */
 }
 
 footer ul li {
@@ -157,6 +166,10 @@ footer ul li a {
 
 footer ul li a:hover {
     text-decoration: underline; /* Ajoute un soulignement au survol */
+}
+
+footer p {
+    text-align: center; /* Centre le texte du copyright */
 }
 
 table {
@@ -374,17 +387,274 @@ nav .menu-toggle {
         text-align: center;
     }
 }
-  }
+
+/* Styles pour le menu mobile */
+@media (max-width: 900px) {
+    nav ul {
+        display: none; /* Masquer le menu par défaut */
+        flex-direction: column;
+        background: #181818;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100vw;
+        border-bottom: 2px solid #2a2a2a;
+        z-index: 1000;
+    }
+
+    nav ul.open {
+        display: flex !important; /* Afficher le menu lorsqu'il est ouvert */
+    }
+
+    nav ul li {
+        margin: 10px 0;
+        text-align: center;
+    }
+}
+
   nav .menu-toggle {
     display: block;
     position: absolute;
     right: 1em;
     top: 0.7em;
   }
-}
 @media (min-width: 901px) {
     .menu-toggle {
         display: none;
     }
+    nav ul {
+        display: flex; /* Afficher le menu par défaut */
+        flex-direction: row;
+        position: static;
+        background: none;
+        box-shadow: none;
+        justify-content: center; /* Centre les éléments horizontalement */
+        text-align: center; /* Centre le texte */
+    }
+    nav ul li {
+        margin: 0 15px; /* Ajuste l'espacement entre les éléments */
+    }
+    nav ul li a {
+        text-align: center; /* Centre le texte des liens */
+    }
 }
 
+/* Centrer les titres et paragraphes dans le contenu principal */
+main h1, main h2, main p {
+    text-align: center; /* Centre les titres et paragraphes */
+}
+
+/* Centrer les textes dans le footer */
+footer ul {
+    justify-content: center; /* Centre les liens horizontalement */
+    text-align: center; /* Centre le texte */
+}
+
+footer p {
+    text-align: center; /* Centre le texte du copyright */
+}
+
+.menu-close {
+    display: none; /* Masquer par défaut */
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1001;
+}
+
+nav ul.open .menu-close {
+    display: block; /* Afficher lorsque le menu est ouvert */
+}
+
+/* Bouton pour le sous-menu */
+.sub-menu-toggle {
+    display: none; /* Masquer par défaut */
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px 0;
+    text-align: center;
+    width: 100%;
+}
+
+/* Afficher le bouton uniquement sur mobile */
+@media (max-width: 900px) {
+    .sub-menu-toggle {
+        display: block;
+    }
+}
+
+/* Sous-menu masqué par défaut */
+.sub-tabs ul {
+    display: none;
+    flex-direction: column;
+    background-color: #181818;
+    padding: 10px;
+    border-top: 2px solid #2a2a2a;
+    z-index: 1000;
+}
+
+/* Sous-menu visible lorsqu'il est ouvert */
+.sub-tabs ul.open {
+    display: flex;
+}
+
+/* Style pour le bouton "Menu" */
+.menu-toggle {
+    display: block;
+    background-color: #333; /* Couleur de fond sombre */
+    color: #fff; /* Couleur du texte */
+    border: 2px solid #ff6600; /* Bordure orange vif */
+    border-radius: 5px; /* Coins arrondis */
+    padding: 10px 20px; /* Espacement intérieur */
+    font-size: 16px; /* Taille de la police */
+    font-weight: bold; /* Texte en gras */
+    text-align: center; /* Centrer le texte */
+    cursor: pointer; /* Curseur en forme de main */
+    transition: background-color 0.3s, color 0.3s; /* Animation au survol */
+    margin: 10px auto; /* Centrer horizontalement avec un espacement */
+    width: fit-content; /* Ajuste la largeur au contenu */
+}
+
+/* Effet au survol */
+.menu-toggle:hover {
+    background-color: #ff6600; /* Fond orange vif */
+    color: #000; /* Texte noir */
+}
+
+/* Style pour le bouton du sous-menu */
+.sub-menu-toggle {
+    display: block;
+    background-color: #333; /* Couleur de fond sombre */
+    color: #fff; /* Couleur du texte */
+    border: 2px solid #ff6600; /* Bordure orange vif */
+    border-radius: 5px; /* Coins arrondis */
+    padding: 10px 20px; /* Espacement intérieur */
+    font-size: 16px; /* Taille de la police */
+    font-weight: bold; /* Texte en gras */
+    text-align: center; /* Centrer le texte */
+    cursor: pointer; /* Curseur en forme de main */
+    transition: background-color 0.3s, color 0.3s; /* Animation au survol */
+    margin: 10px auto; /* Centrer horizontalement avec un espacement */
+    width: fit-content; /* Ajuste la largeur au contenu */
+}
+
+/* Effet au survol pour le bouton du sous-menu */
+.sub-menu-toggle:hover {
+    background-color: #ff6600; /* Fond orange vif */
+    color: #000; /* Texte noir */
+}
+
+/* Sous-menu masqué par défaut */
+.sub-tabs ul {
+    display: none; /* Masquer par défaut */
+    flex-direction: column;
+    background-color: #181818; /* Fond sombre */
+    padding: 10px;
+    border-top: 2px solid #2a2a2a; /* Bordure supérieure */
+    z-index: 1000;
+    margin: 0;
+    list-style: none; /* Supprime les puces */
+}
+
+/* Sous-menu visible lorsqu'il est ouvert */
+.sub-tabs ul.open {
+    display: flex; /* Afficher le sous-menu */
+}
+
+/* Style pour les liens du sous-menu */
+.sub-tabs ul li {
+    margin: 10px 0;
+    text-align: center;
+}
+
+.sub-tabs ul li a {
+    text-decoration: none; /* Supprime le soulignement */
+    color: #ffffff; /* Couleur du texte */
+    font-weight: bold; /* Texte en gras */
+    font-size: 16px; /* Taille de la police */
+    padding: 10px; /* Espacement intérieur */
+    transition: color 0.3s, border-bottom 0.3s; /* Animation au survol */
+    display: block;
+}
+
+/* Effet au survol pour les liens du sous-menu */
+.sub-tabs ul li a:hover {
+    color: #ff6600; /* Couleur orange vif */
+    border-bottom: 2px solid #ff6600; /* Ligne orange sous le texte */
+}
+
+/* Cacher le bouton du sous-menu et le sous-menu sur PC */
+@media (min-width: 901px) {
+    .sub-menu-toggle {
+        display: none; /* Masquer le bouton du sous-menu */
+    }
+
+    .sub-tabs ul {
+        display: none !important; /* Masquer le sous-menu */
+    }
+}
+/* Cacher le bouton du sous-menu et le sous-menu sur PC */
+@media (min-width: 901px) {
+    .menu-toggle {
+        display: none; /* Masquer le bouton du sous-menu */
+    }
+
+    .sub-tabs ul {
+        display: none !important; /* Masquer le sous-menu */
+    }
+}
+
+/* Afficher les sous-onglets en version PC */
+@media (min-width: 901px) {
+    .sub-tabs ul {
+        display: flex !important; /* Afficher les sous-onglets */
+        flex-direction: row; /* Aligner les sous-onglets horizontalement */
+        justify-content: center; /* Centrer les sous-onglets */
+        background-color: transparent; /* Pas de fond */
+        padding: 0; /* Supprimer le padding */
+        border: none; /* Pas de bordure */
+    }
+
+    .sub-tabs ul li {
+        margin: 0 15px; /* Espacement horizontal entre les sous-onglets */
+    }
+
+    .sub-tabs ul li a {
+        text-decoration: none; /* Supprimer le soulignement */
+        color: #ffffff; /* Couleur du texte */
+        font-weight: bold; /* Texte en gras */
+        font-size: 16px; /* Taille de la police */
+        padding: 5px 10px; /* Espacement intérieur */
+        transition: color 0.3s, border-bottom 0.3s; /* Animation au survol */
+    }
+
+    .sub-tabs ul li a:hover {
+        color: #ff6600; /* Couleur orange vif au survol */
+        border-bottom: 2px solid #ff6600; /* Ligne orange sous le texte */
+    }
+}
+
+/* Masquer les sous-onglets en version mobile */
+@media (max-width: 900px) {
+    .sub-tabs ul {
+        display: none; /* Masquer les sous-onglets par défaut */
+    }
+
+    .sub-tabs ul.open {
+        display: flex; /* Afficher les sous-onglets lorsqu'ils sont ouverts */
+        flex-direction: column; /* Aligner les sous-onglets verticalement */
+        background-color: #181818; /* Fond sombre */
+        padding: 10px;
+        border-top: 2px solid #2a2a2a; /* Bordure supérieure */
+    }
+}
