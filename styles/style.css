@@ -711,3 +711,88 @@ nav ul .dropdown-menu a:hover {
 nav ul .dropdown {
     position: relative;
 }
+
+/* Conteneur principal pour les personnages */
+.character-container {
+    background-color: #181818; /* Fond sombre pour correspondre au thème */
+    color: #fff; /* Texte blanc pour le contraste */
+    border: 1px solid #333; /* Bordure subtile */
+    border-radius: 10px; /* Coins arrondis */
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre pour un effet de profondeur */
+}
+
+/* En-tête du personnage */
+.character-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.character-header h1 {
+    font-size: 2rem;
+    color: #ff6600; /* Couleur dorée pour le titre */
+    margin-bottom: 10px;
+}
+
+.character-header .character-quote {
+    font-style: italic;
+    color: #ccc; /* Couleur grise pour la citation */
+}
+
+/* Image du personnage */
+.character-image img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px; /* Coins arrondis pour l'image */
+    border: 2px solid #444; /* Bordure subtile */
+}
+
+/* Détails du personnage */
+.character-details {
+    margin-top: 20px;
+}
+
+.character-details h1 {
+    font-size: 1.5rem;
+    color: #ff6600; /* Couleur dorée pour les sous-titres */
+    margin-bottom: 10px;
+}
+
+.character-details h2 {
+    font-size: 1.5rem;
+    color: #ff6600; /* Couleur dorée pour les sous-titres */
+    margin-bottom: 10px;
+}
+
+.character-details h3 {
+    font-size: 1.2rem;
+    color: #ff6600;
+    margin-bottom: 10px;
+}
+
+.character-details ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+
+.character-details ul li {
+    margin-bottom: 5px;
+    font-size: 1rem;
+}
+
+.character-details ul li strong {
+    color: #ff6600; /* Mettre en valeur les attributs */
+}
+
+/* Description du personnage */
+.character-description {
+    margin-top: 20px;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #ccc; /* Couleur grise pour le texte */
+}
