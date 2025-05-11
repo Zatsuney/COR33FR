@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lune</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+        h1 {
+            text-align: center;
+        }
+        .header-image {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="../images/title.png" alt="Clair Obscur Ressources FR" class="header-image">
+            <button class="menu-toggle">Menu</button> <!-- Bouton pour mobile -->
+        <nav>
+            <ul>
+                <button class="menu-close">Fermer</button> <!-- Bouton pour fermer le menu -->
+                <li><a href="../index.html">Accueil</a></li> <!-- Lien vers la racine -->
+                <li><a href="armes.html">Armes</a></li>
+                <li><a href="competences-de-monoco.html">Compétences de Monoco</a></li>
+                <li><a href="disques.html">Disques</a></li>
+                <!-- Dropdown menu Pictos/Lumina -->
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Pictos/Luminas<span class="arrow">&#9662;</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="pictos.html">Pictos</a></li>
+                        <li><a href="lumina.html">Luminas</a></li>
+                    </ul>
+                <li><a href="tenues.html">Tenues</a></li>
+                <li><a href="https://maxroll.gg/clair-obscur-expedition-33/planner">Crée un build avec Maxroll</a></li>
+                <!-- Dropdown menu Guides -->
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Guides <span class="arrow">&#9662;</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="journauxexp.html">Journaux d'expéditions</a></li>
+                        <li><a href="questitem.html">Objet de quête</a></li>
+                        <li><a href="lostgestral.html">Gestrals Perdu</a></li>
+                    </ul>
+                <!-- Dropdown menu Autres -->
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Autres<span class="arrow">&#9662;</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="personnages.html">Personnages</a></li>
+                    </ul>
+                    <li><a href="https://discord.com/invite/dAbAg3UVxv"><i class="fab fa-discord"></i>Discord</a></li>
+                </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+</head>
+<body>
+    <h1>Tableau des Luminas</h1>
+    <!-- Bouton pour filtrer -->
+    <button id="filterButton">Afficher les manquants</button>
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Coût</th>
+                <th>Obtenu</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>Affaiblissement amélioré</td>
+                <td>+15 % à la réduction de dégâts infligée par Affaiblissement.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Affinité Brûlante</td>
+                <td>Dégâts augmentés de 25 % contre les cibles affectées par Brûlure.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Affinité Inversée</td>
+                <td>Applique Inversion sur soi-même pendant 3 tours au début du combat.\nDégâts augmentés de 50 % en état d'Inversion.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Altéré</td>
+                <td>Dégâts augmentés de 15 % par altération sur le personnage.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Attaque accrue</td>
+                <td>Chaque fois que le personnage inflige des dégâts, il tente de consommer 1 PA.\nS'il y parvient, les dégâts sont augmentés de 20 %.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Attaque affaiblissante</td>
+                <td>Les attaques de base infligent Affaiblissement pendant 1 tour.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Attaque améliorée</td>
+                <td>Dégâts d'attaque de base augmentés de 50 %.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Attaque combo I</td>
+                <td>L'attaque de base permet de porter 1 coup supplémentaire.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Attaque combo II</td>
+                <td>L'attaque de base permet de porter 1 coup supplémentaire.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Attaque combo III</td>
+                <td>L'attaque de base permet de porter 1 coup supplémentaire.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Attaque Fracturante</td>
+                <td>Dégâts de Fracture augmentés de 50 % lors des attaques de base.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Attaque fragilisante</td>
+                <td>Les attaques de base infligent Vulnérabilité pendant 1 tour.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Attaque protectrice</td>
+                <td>Les attaques de base confèrent Carapace pendant 1 tour.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Au cœur de l'action</td>
+                <td>+3 boucliers au début du combat, mais le maximum de santé est réduit de moitié.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Balle sanglante</td>
+                <td>+1 PA en tirant sur un point faible.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Bouclier Basique</td>
+                <td>+1 bouclier si le personnage n'a aucun bouclier au début du tour.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Bouclier surpuissant</td>
+                <td>Dégâts augmentés de 10 % par point de bouclier sur le personnage.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Boucliers Affinés</td>
+                <td>Dégâts augmentés de 30 % tant que le personnage a des boucliers. Mais tous ses boucliers sont perdus au moindre coup subi.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Brûlure Fracturante</td>
+                <td>Dégâts de Fracture augmentés de 25 % contre les ennemis affectés par Brûlure.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Brûlure énergisante</td>
+                <td>+1 PA en appliquant Brûlure. Une fois par tour.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Brûlures critiques</td>
+                <td>Chances de critique augmentées de 25 % contre les ennemis affectés par Brûlure.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Brûlures prolongées</td>
+                <td>La durée de Brûlure augmente de 2tours.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Buff curatif</td>
+                <td>Récupère 15 % de santé en appliquant un buff.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Canon de verre</td>
+                <td>Inflige 25 % de dégâts en plus, mais les dégâts subis augmentent eux aussi de 25 %.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Carapace améliorée</td>
+                <td>+10 % à la réduction de dégâts conférée par Carapace.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Carapace immédiate</td>
+                <td>Applique Carapace pendant 3 tours au début du combat.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Carapace surpuissante</td>
+                <td>Applique également Surpuissance en appliquant Carapace.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Charges sur altération</td>
+                <td>+10 % de charge Gradient en appliquant un buff. Une fois par tour.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Charges sur attaque</td>
+                <td>+15 % de charge Gradient à chaque attaque de base.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Charges sur brûlure</td>
+                <td>+20 % de charge Gradient en infligeant Brûlure à une cible. Une fois par tour.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Charges sur contre</td>
+                <td>+10 % de charge Gradient à chaque contre.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Charges sur critiques</td>
+                <td>+20 % de charge Gradient en cas de coup critique. Une fois par tour.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Charges sur faiblesse</td>
+                <td>+15 % de charge Gradient en touchant une faiblesse (une fois par tour).</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Charges sur fracture</td>
+                <td>Dégâts de Fracture des attaques Gradient augmentés de 50 %.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Charges sur marque</td>
+                <td>+20 % de charge Gradient en touchant une cible marquée. Une fois par tour.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Charges sur parade</td>
+                <td>+5 % de charge Gradient en cas de parade réussie.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Charges sur soins</td>
+                <td>Génère +50 % de charges Gradient en utilisant les compétences de soins.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Charges sur étourdissement</td>
+                <td>+5 % de charge Gradient en touchant un ennemi étourdi.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Contamination bénéfique</td>
+                <td>+2 PA en appliquant une altération. Une fois par tour.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Contre amélioré I</td>
+                <td>Dégâts de contre augmentés de 50 %.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Contre amélioré II</td>
+                <td>Dégâts de contre augmentés de 75 %.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Contre amélioré III</td>
+                <td>Dégâts de contre augmentés de 100 %.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Contre affaiblissant</td>
+                <td>Les contres infligent Affaiblissement pendant 1 tour.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Contre Fracturant</td>
+                <td>Dégâts de Fracture augmentés de 50 % lors des contres.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Critiques sur faiblesse</td>
+                <td>Chances de critique augmentées de 25 % contre les ennemis affectés par Faiblesse.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Critiques sur vulnérabilité</td>
+                <td>Chances de critique augmentées de 25 % contre les ennemis affectés par Vulnérabilité.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Danger accélérant</td>
+                <td>Le personnage gagne Rapidité s'il se bat seul.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Danger protecteur</td>
+                <td>Le personnage gagne Carapace s'il se bat seul.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Danger surpuissant</td>
+                <td>Le personnage gagne Surpuissance s'il se bat seul.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Dernier rempart critique</td>
+                <td>Chances de critique augmentées de 50 % si la santé est au maximum.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Dernier rempart protecteur</td>
+                <td>Le personnage gagne Carapace s'il se bat seul.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Défense aléatoire</td>
+                <td>Les dégâts augmentent de 5 % à chaque esquive successive réussie. Se cumule un maximum de 10 fois.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Esquive renforçante</td>
+                <td>Les esquives réussies confèrent Surpuissance pendant 1 tour.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Fracture accélérante</td>
+                <td>+1 PA en infligeant Fracture à un ennemi. Une fois par tour.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Fracture améliorée</td>
+                <td>Dégâts de Fracture augmentés de 50 %.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Fracture brûlante</td>
+                <td>Dégâts de Fracture augmentés de 25 % contre les ennemis affectés par Brûlure.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Fracture critique</td>
+                <td>Chances de critique augmentées de 25 % contre les ennemis affectés par Fracture.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Fracture embrasante</td>
+                <td>Les attaques de base infligent Brûlure pendant 1 tour.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Fracture fragilisante</td>
+                <td>Les attaques de base infligent Vulnérabilité pendant 1 tour.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Fracture Gradient</td>
+                <td>Dégâts de Fracture augmentés de 50 % sur les attaques Gradient.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Fracture marquante</td>
+                <td>Les attaques de base infligent Marque pendant 1 tour.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Fracture ralentissante</td>
+                <td>Les attaques de base infligent Lenteur pendant 1 tour.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Fracture sur Attaque</td>
+                <td>Dégâts de Fracture augmentés de 50 % sur les attaques de base.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Fracture énergisante</td>
+                <td>+1 PA en infligeant Fracture à un ennemi. Une fois par tour.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Gradient combattant</td>
+                <td>Dégâts de Fracture augmentés de 50 % sur les attaques Gradient.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Gradient énergisant</td>
+                <td>+1 PA en utilisant une charge Gradient. Une fois par tour.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Guérison énergisante</td>
+                <td>Soigner un allié lui confère également 1 PA.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Hardiesse</td>
+                <td>Dégâts augmentés de 30 % mais ne peut pas recevoir de soins.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Immaculé</td>
+                <td>Le personnage inflige 30 % de dégâts en plus tant qu'il ne se fait pas toucher par les attaques ennemies.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Initiative améliorée</td>
+                <td>Dégâts du premier coup augmentés de 50 %. Une fois par combat.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Instant critique</td>
+                <td>Chances de critique augmentées de 50 % si la santé est en dessous de 30 %.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Lenteur améliorée</td>
+                <td>Chances de critique augmentées de 50 % si la santé est en dessous de 30 %.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Lenteur Fracturante</td>
+                <td>Dégâts de Fracture augmentés de 25 % contre les ennemis ralentis.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Loup solitaire</td>
+                <td>Inflige 50 % de dégâts en plus en combattant seul.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Marque après marque</td>
+                <td>50 % de chances d'appliquer Marque en attaquant une cible déjà marquée.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Marque brûlante</td>
+                <td>Applique Brûlure en touchant un ennemi marqué.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Marque gratifiante</td>
+                <td>+2 PA en attaquant une cible marquée. Une fois par tour.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Marque surpuissante</td>
+                <td>Gagne Surpuissance en touchant un ennemi marqué.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Mort brûlante</td>
+                <td>Applique 3 Brûlures à tous les ennemis en mourant.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Mort protectrice</td>
+                <td>Lorsque le personnage meurt, ses alliés gagnent Carapace.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Mort préservante</td>
+                <td>Lorsque le personnage meurt, ses alliés gagnent 3 boucliers.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Parade périlleuse</td>
+                <td>+1 PA en cas de parade réussie, mais les dégâts subis sont doublés.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Parade renforçante</td>
+                <td>Chaque parade réussie augmente les dégâts infligés de 5 % jusqu'à la fin du tour suivant.\nLe fait de subir le moindre dégât dissipe ce buff.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Peintre</td>
+                <td>Convertit tous les dégâts physiques en dégâts de néant.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Pleine puissance</td>
+                <td>Dégâts augmentés de 25 % quand la santé est au maximum.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Plus qu'un</td>
+                <td>La santé maximale est de 1.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Plus vif que fort</td>
+                <td>Joue toujours deux fois de suite, mais inflige 50 % de dégâts en moins.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Polyvalence</td>
+                <td>Après un tir en visée libre, les dégâts d'attaque de base augmentent de 50 % pendant 1 tour.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Pouvoir Épuisant</td>
+                <td>Dégâts augmentés de 50 % en état d'Épuisement.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Pro du repli</td>
+                <td>Permet une fuite instantanée.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Puissance Surpeinte</td>
+                <td>Les dégâts peuvent excéder 9 999 points.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Purification drainante</td>
+                <td>Consomme 1 PA pour empêcher l'application d'altérations (si possible).</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Purification énergisante</td>
+                <td>Dissipe la première altération reçue et confère 2 PA.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Raccourci</td>
+                <td>Joue immédiatement si la santé tombe en dessous de 30 %. Une fois par combat.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Rapidité améliorée</td>
+                <td>+25 % à l'augmentation de vitesse conférée par Rapidité.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Rapidité immédiate</td>
+                <td>Applique Rapidité pendant 3 tours au début du combat.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Rapidité protectrice</td>
+                <td>Applique également Carapace en appliquant Rapidité.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Renaissance Paradoxale</td>
+                <td>Joue immédiatement quand ramené à la vie.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Renaissance protégée</td>
+                <td>+1 bouclier quand le personnage est ranimé.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Renaissance régénérante</td>
+                <td>Confère Régénération pendant 3 tours en revenant à la vie.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Renaissance surpuissante</td>
+                <td>Confère Surpuissance pendant 3 tours en revenant à la vie.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Renaissance énergisante</td>
+                <td>+3 PA pour tous les alliés lorsque ce personnage est ranimé.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Récupération</td>
+                <td>Récupère 10 % de santé au début du tour.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Régénération immédiate</td>
+                <td>Applique Régénération pendant 3 tours au début du combat.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Seconde chance</td>
+                <td>Revient à la vie avec 100 % de santé. Une fois par combat.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Soins efficaces</td>
+                <td>Double tous les soins reçus.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Soins protecteurs</td>
+                <td>Soigner un allié lui applique également Carapace pendant 1 tour.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Soins surpuissants</td>
+                <td>Soigner un allié lui applique également Surpuissance pendant 1 tour.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Solidification</td>
+                <td>+2 boucliers quand la santé du personnage tombe en dessous de 50 %. Une fois par combat.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Soutien efficace</td>
+                <td>+2 PA en utilisant un objet.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Surpuissance améliorée</td>
+                <td>+15 % à l'augmentation de dégâts conférée par Surpuissance.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Surpuissance immédiate</td>
+                <td>Applique Surpuissance pendant 3 tours au début du combat.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Surpuissance rapide</td>
+                <td>Applique également Rapidité en appliquant Surpuissance.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Survivant</td>
+                <td>Permet de survivre à une attaque fatale en conservant 1 PV. Une fois par combat.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Teinte chargeante</td>
+                <td>+5 % de charge Gradient en utilisant un objet.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Teinte protectrice</td>
+                <td>Les teintes curatives confèrent également Carapace.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Teinte préservante</td>
+                <td>Les teintes curatives confèrent également 2 boucliers.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Teinte temporelle</td>
+                <td>Les teintes énergisantes confèrent également Rapidité.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Tir perforant</td>
+                <td>Dégâts de visée libre augmentés de 25 %.\nLes tirs en visée libre ignorent les boucliers.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Tireur d'élite</td>
+                <td>Chaque tour, le premier tir en visée libre inflige 200 % de dégâts en plus et offre une possibilité de Fracture.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Tirs accélérants</td>
+                <td>20 % de chances de gagner Rapidité sur les tirs en visée libre.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Tirs brûlants</td>
+                <td>20 % de chances d'appliquer Brûlure sur les tirs en visée libre.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Tirs Fracturants</td>
+                <td>Dégâts de Fracture augmentés de 50 % sur les tirs en visée libre.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Tirs marquants</td>
+                <td>20 % de chances d'appliquer Marque sur les tirs en visée libre.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Tirs protecteurs</td>
+                <td>20 % de chances de gagner Carapace sur les tirs en visée libre.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Tirs surpuissants</td>
+                <td>20 % de chances de gagner Surpuissance sur les tirs en visée libre.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Tirs énergisants</td>
+                <td>20 % de chances de gagner 1 PA sur les tirs en visée libre.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Travail d'équipe</td>
+                <td>Dégâts augmentés de 10 % si tous les alliés sont encore en vie.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Tricheur</td>
+                <td>Joue toujours deux fois de suite.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Visée améliorée</td>
+                <td>Dégâts de visée libre augmentés de 50 %.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Visée chanceuse</td>
+                <td>30 % de chances de gagner 1 PA en tirant sur un point faible.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Vulnérabilité améliorée</td>
+                <td>+15 % à l'augmentation de dégâts imposée par Vulnérabilité.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Échauffement</td>
+                <td>Dégâts augmentés de 5 % par tour. Peut se cumuler jusqu'à 5 fois.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Élimination revigorante</td>
+                <td>Récupère 50 % de santé en tuant un ennemi.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Énergie de saut</td>
+                <td>+1 PA à chaque contre sauté.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Énergie mortelle I</td>
+                <td>+3 PA en tuant un ennemi.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Énergie mortelle II</td>
+                <td>+3 PA en tuant un ennemi.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Énergie - Attaque I</td>
+                <td>+1 PA à chaque attaque de base.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Énergie - Attaque II</td>
+                <td>+1 PA à chaque attaque de base.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Énergie - Départ I</td>
+                <td>+1 PA au début du combat.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Énergie - Départ II</td>
+                <td>+1 PA au début du combat.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Énergie - Départ III</td>
+                <td>+1 PA au début du combat.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Énergie - Départ IV</td>
+                <td>+1 PA au début du combat.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Énergie - Faiblesse</td>
+                <td>+1 PA en touchant une faiblesse. Une fois par tour.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Énergie - Parade</td>
+                <td>+1 PA en cas de parade réussie.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Énergie - Tour</td>
+                <td>+1 PA au début du tour.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Étourdissement critique</td>
+                <td>100 % de chances de critique en frappant une cible étourdie.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Étourdissement Opportun</td>
+                <td>Dégâts augmentés de 30 % contre les cibles étourdies.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+            <tr>
+                <td>Étourdissement énergisant</td>
+                <td>+1 PA en frappant une cible étourdie à l'aide d'une compétence.</td>
+                <td>10</td> <!-- Vous pouvez ajuster le coût ici -->
+                <td class="checkbox"><input type="checkbox"></td>
+            </tr>
+    
+        </tbody>
+    </table>
+
+    <script>
+        // Fonction de filtrage
+        document.getElementById('filterButton').addEventListener('click', function () {
+            const rows = document.querySelectorAll('tbody tr');
+            const button = this;
+            const showMissing = button.textContent.includes('manquants');
+
+            rows.forEach(row => {
+                const checkbox = row.querySelector('td.checkbox input[type="checkbox"]');
+                if (checkbox) {
+                    if (showMissing && checkbox.checked) {
+                        row.style.display = 'none';
+                    } else if (!showMissing && !checkbox.checked) {
+                        row.style.display = 'none';
+                    } else {
+                        row.style.display = '';
+                    }
+                }
+            });
+
+            // Met à jour le texte du bouton
+            button.textContent = showMissing ? 'Afficher les obtenus' : 'Afficher les manquants';
+        });
+    </script>
+</body>
+</html>
