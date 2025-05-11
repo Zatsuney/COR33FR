@@ -3,54 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact</title>
+    <title>Lune</title>
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
+<style>
         h1 {
-            text-align: center; /* Centre le titre */
-            color: #ff6600; /* Couleur orange pour le titre */
-            margin-bottom: 20px;
+            text-align: center;
         }
         .header-image {
             display: block;
             margin: 0 auto;
             max-width: 100%;
             height: auto;
-        }
-        form {
-            max-width: 600px;
-            margin: 0 auto; /* Centre le formulaire horizontalement */
-            padding: 20px;
-            background-color: #2a2a2a;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-        }
-        form label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: #ffffff;
-        }
-        form input, form textarea, form button {
-            width: 100%; /* Prend toute la largeur disponible */
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #444;
-            border-radius: 4px;
-            background-color: #1e1e1e;
-            color: #ffffff;
-            box-sizing: border-box; /* Inclut le padding dans la largeur */
-        }
-        form button {
-            background-color: #ff6600;
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
-            text-align: center; /* Centre le texte dans le bouton */
-        }
-        form button:hover {
-            background-color: #e55a00;
         }
     </style>
 </head>
@@ -59,6 +23,41 @@
         <img src="../images/title.png" alt="Clair Obscur Ressources FR" class="header-image">
             <button class="menu-toggle">Menu</button> <!-- Bouton pour mobile -->
         <nav>
+            <ul>
+                <button class="menu-close">Fermer</button> <!-- Bouton pour fermer le menu -->
+                <li><a href="../index.html">Accueil</a></li> <!-- Lien vers la racine -->
+                <li><a href="armes.html">Armes</a></li>
+                <li><a href="competences-de-monoco.html">Compétences de Monoco</a></li>
+                <li><a href="disques.html">Disques</a></li>
+                <!-- Dropdown menu Pictos/Lumina -->
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Pictos/Luminas<span class="arrow">&#9662;</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="pictos.html">Pictos</a></li>
+                        <li><a href="lumina.html">Luminas</a></li>
+                    </ul>
+                <li><a href="tenues.html">Tenues</a></li>
+                <li><a href="https://maxroll.gg/clair-obscur-expedition-33/planner">Crée un build avec Maxroll</a></li>
+                <!-- Dropdown menu Guides -->
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Guides <span class="arrow">&#9662;</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="journauxexp.html">Journaux d'expéditions</a></li>
+                        <li><a href="questitem.html">Objet de quête</a></li>
+                        <li><a href="lostgestral.html">Gestrals Perdu</a></li>
+                    </ul>
+                <!-- Dropdown menu Autres -->
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Autres<span class="arrow">&#9662;</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="personnages.html">Personnages</a></li>
+                    </ul>
+                    <li><a href="https://discord.com/invite/dAbAg3UVxv"><i class="fab fa-discord"></i>Discord</a></li>
+                </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
             <ul>
                 <button class="menu-close">Fermer</button> <!-- Bouton pour fermer le menu -->
                 <li><a href="../index.html">Accueil</a></li> <!-- Lien vers la racine -->
