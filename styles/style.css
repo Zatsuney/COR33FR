@@ -796,3 +796,24 @@ nav ul .dropdown {
     line-height: 1.6;
     color: #ccc; /* Couleur grise pour le texte */
 }
+
+/* Style pour le bouton de filtrage */
+#filterButton {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #ff6600; /* Couleur orange vif pour correspondre au thème */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-weight: bold;
+    text-align: center;
+}
+
+#filterButton:hover {
+    background-color: #cc5200; /* Couleur plus sombre au survol */
+    color: #000; /* Texte noir au survol */
+}
