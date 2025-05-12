@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des builds</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e1e1e;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px; /* Ajoute un espacement entre l'image et les menus */
+        }
+
+        .header-image {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            width: 80%;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #2c2c2c;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu-section {
+            background-color: #333;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu-section h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #f4f4f4;
+        }
+
+        .menu-section button {
+            background-color: #ff6600;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .menu-section button:hover {
+            background-color: #8b3902;
+        }
+        .menu-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0;
+        }
+        .menu-section ul li {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+        .menu-section ul li a {
+            color: #8b3902;
+            text-decoration: none;
+        }
+        .menu-section ul li a:hover {
+            text-decoration: underline;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropbtn {
+            background-color: #8b3902;
+            color: white;
+            padding: 10px 15px;
+            font-size: 14px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            min-width: 160px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: #fff;
+            padding: 10px 15px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+        .dropdown-content a:hover {
+            background-color: #444;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .dropdown:hover .dropbtn {
+            background-color: #8b3902;
+        }
+        .stat-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+        .stat-item span {
+            flex: 1;
+            text-align: left;
+        }
+        .stat-buttons {
+            display: flex;
+            gap: 5px;
+        }
+        .stat-buttons button {
+            background-color: #ff6600;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .stat-buttons button:hover {
+            background-color: #8b3902;
+        }
+        #selected-lumina-list {
+            max-height: 150px; /* Limite la hauteur à environ 5 éléments */
+            overflow-y: auto; /* Active la barre de défilement verticale */
+            padding: 10px;
+            background-color: #2c2c2c;
+            border: 1px solid #444;
+            border-radius: 5px;
+        }
+        .dropdown:hover .dropdown-menu,
+        .dropdown:focus-within .dropdown-menu {
+            display: block; /* Le menu reste ouvert lorsqu'il est survolé ou activé */
+        }
+
+        .dropdown-menu {
+            display: none; /* Masqué par défaut */
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+
+        .dropdown-menu a {
+            color: #fff;
+            text-decoration: none;
+            padding: 5px 10px;
+            display: block;
+            border-radius: 5px;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #444;
+        }
+        .highlight {
+            background-color: yellow;
+            color: black;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="../images/title.png" alt="Clair Obscur Ressources FR" class="header-image">
+        <button class="menu-toggle">Menu</button> <!-- Bouton pour mobile -->
+        <nav>
+            <ul>
+                <button class="menu-close">Fermer</button> <!-- Bouton pour fermer le menu -->
+                <li><a href="../index.html">Accueil</a></li> <!-- Lien vers la racine -->
+                <li><a href="../tabs/armes.html">Armes</a></li>
+                <li><a href="../tabs/competences-de-monoco.html">Compétences de Monoco</a></li>
+                <li><a href="../tabs/disques.html">Disques</a></li>
+                                <!-- Dropdown menu Pictos/Lumina -->
+                <li class="dropdown" tabindex="0">
+                    <a href="#" class="dropdown-toggle">Pictos/Luminas<span class="arrow">&#9662;</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../tabs/pictos.html">Pictos</a></li>
+                        <li><a href="../tabs/lumina.html">Luminas</a></li>
+                    </ul>
+                </li>
+                <li><a href="../tabs/tenues.html">Tenues</a></li>
+                <li><a href="../Builder/build.html">Crée un build</a></li>
+                <!-- Dropdown menu Guides -->
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Guides<span class="arrow">&#9662;</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../tabs/journauxexp.html">Journaux d'expéditions</a></li>
+                        <li><a href="../tabs/questitem.html">Objet de quête</a></li>
+                        <li><a href="../tabs/lostgestral.html">Gestrals Perdu</a></li>
+                    </ul>
+                    <!-- Dropdown menu Guides -->
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Autres<span class="arrow">&#9662;</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="tabs/personnages.html">Personnages</a></li>
+                    </ul>
+                    <li><a href="https://discord.com/invite/dAbAg3UVxv"><i class="fab fa-discord"></i>Discord</a></li>
+                </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e1e1e;
+            color: #fff;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .build-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #2c2c2c;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .build {
+            background-color: #333;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .build h3 {
+            margin: 0 0 10px;
+            color: #f4f4f4;
+        }
+
+        .build p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="build-container">
+        <h1>Liste des Builds Sauvegardés</h1>
+        <input 
+            type="text" 
+            id="search-bar" 
+            placeholder="Rechercher un build..." 
+            style="width: 97%; padding: 10px; margin-bottom: 20px; border-radius: 5px; border: none; font-size: 16px;"
+        >
+        <div id="build-list">
+            <!-- Les builds seront affichés ici -->
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+    <script>
+        // Initialiser Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyAnVOPY9sF5Hdo0Pr_wnLHHzGodMu8m5Kk",
+            authDomain: "cor33fr-6d60b.firebaseapp.com",
+            databaseURL: "https://cor33fr-6d60b-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "cor33fr-6d60b",
+            storageBucket: "cor33fr-6d60b.appspot.com",
+            messagingSenderId: "155454546374",
+            appId: "1:155454546374:web:9ad2b70565a890b04712c7",
+            measurementId: "G-6Q5NJ8533G"
+        };
+
+        const app = firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        // Fonction pour normaliser les chaînes (supprime les accents et met en minuscule)
+        function normalizeString(str) {
+            return str
+                .normalize("NFD") // Décompose les caractères accentués
+                .replace(/[\u0300-\u036f]/g, "") // Supprime les accents
+                .toLowerCase(); // Convertit en minuscules
+        }
+
+        // Récupère les builds sauvegardés depuis Firebase
+        const buildsRef = firebase.database().ref('builds');
+        const buildList = document.getElementById('build-list');
+        const searchBar = document.getElementById('search-bar');
+
+        let allBuilds = {}; // Stocke tous les builds pour la recherche
+
+        // Fonction pour afficher les builds
+        function displayBuilds(builds, query = '') {
+            buildList.innerHTML = ''; // Vide la liste avant de la remplir
+
+            if (!builds || Object.keys(builds).length === 0) {
+                buildList.innerHTML = '<p>Aucun build sauvegardé.</p>';
+                return;
+            }
+
+            Object.keys(builds).forEach((key, index) => {
+                const build = builds[key];
+                const buildDiv = document.createElement('div');
+                buildDiv.classList.add('build');
+
+                // Vérifie si les champs pictos et luminas existent et sont des tableaux
+                const pictos = Array.isArray(build.pictos) ? build.pictos.join(', ') : 'Aucun';
+                const luminas = Array.isArray(build.luminas)
+                    ? build.luminas.map(l => `${l.name} (Coût : ${l.cost})`).join(', ')
+                    : 'Aucun';
+
+                // Fonction pour mettre en surbrillance les mots trouvés
+                const highlight = (text) => {
+                    if (!query) return text; // Si aucune requête, retourne le texte original
+                    const regex = new RegExp(`(${query})`, 'gi'); // Crée une expression régulière pour la requête
+                    return text.replace(regex, '<span class="highlight">$1</span>'); // Remplace les correspondances par une balise <span>
+                };
+
+                buildDiv.innerHTML = `
+                    <h3>Build ${index + 1}</h3>
+                    <p><strong>Pseudo :</strong> ${highlight(build.pseudo || 'Non spécifié')}</p>
+                    <p><strong>Description :</strong> ${highlight(build.description || 'Non spécifiée')}</p>
+                    <p><strong>Personnage :</strong> ${highlight(build.character || 'Non spécifié')}</p>
+                    <p><strong>Arme :</strong> ${highlight(build.weapon || 'Non spécifiée')}</p>
+                    <p><strong>Pictos :</strong> ${highlight(pictos)}</p>
+                    <p><strong>Luminas :</strong> ${highlight(luminas)}</p>
+                    <p><strong>Coût total :</strong> ${build.totalCost || 0}</p>
+                `;
+
+                buildList.appendChild(buildDiv);
+            });
+        }
+
+        // Écoute les changements dans Firebase
+        buildsRef.on('value', (snapshot) => {
+            allBuilds = snapshot.val();
+            displayBuilds(allBuilds);
+        });
+
+        // Ajoute un écouteur pour le champ de recherche
+        searchBar.addEventListener('input', (event) => {
+            const query = normalizeString(event.target.value);
+
+            // Filtre les builds en fonction de tous les champs
+            const filteredBuilds = Object.keys(allBuilds)
+                .filter(key => {
+                    const build = allBuilds[key];
+
+                    // Vérifie que les champs existent avant de les utiliser
+                    const pseudo = build.pseudo ? normalizeString(build.pseudo) : '';
+                    const description = build.description ? normalizeString(build.description) : '';
+                    const character = build.character ? normalizeString(build.character) : '';
+                    const weapon = build.weapon ? normalizeString(build.weapon) : '';
+                    const pictos = Array.isArray(build.pictos) ? build.pictos.map(p => normalizeString(p)).join(' ') : '';
+                    const luminas = Array.isArray(build.luminas) ? build.luminas.map(l => normalizeString(l.name)).join(' ') : '';
+
+                    // Vérifie si la requête correspond à l'un des champs
+                    return (
+                        pseudo.includes(query) ||
+                        description.includes(query) ||
+                        character.includes(query) ||
+                        weapon.includes(query) ||
+                        pictos.includes(query) ||
+                        luminas.includes(query)
+                    );
+                })
+                .reduce((result, key) => {
+                    result[key] = allBuilds[key];
+                    return result;
+                }, {});
+
+            displayBuilds(filteredBuilds, query);
+        });
+    </script>
+    <script src="../scripts/app.js"></script>
+<footer>
+        <ul>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="mentionlegal.html">Mentions Légales</a></li>
+        </ul>
+    <p>&copy; 2025 Zatsu - Clair Obscur : Expédition 33 Ressources FR</p>
+</footer>
+</body>
+</html>
