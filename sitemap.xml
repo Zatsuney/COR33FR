@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Page principale -->
+  <url>
+    <loc>https://zatsuney.github.io/COR33FR/</loc>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Pages principales -->
+  <url>
+    <loc>https://zatsuney.github.io/COR33FR/armes.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://zatsuney.github.io/COR33FR/competences-de-monoco.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://zatsuney.github.io/COR33FR/disques.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://zatsuney.github.io/COR33FR/pictos.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://zatsuney.github.io/COR33FR/lumina.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://zatsuney.github.io/COR33FR/tenues.html</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Pages de builds -->
+  <url>
+    <loc>https://zatsuney.github.io/COR33FR/Builder/build.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://zatsuney.github.io/COR33FR/Builder/buildlist.html</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Pages de guides -->
+  <url>
+    <loc>https://zatsuney.github.io/COR33FR/journauxexp.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://zatsuney.github.io/COR33FR/questitem.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://zatsuney.github.io/COR33FR/lostgestral.html</loc>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Autres pages -->
+  <url>
+    <loc>https://zatsuney.github.io/COR33FR/personnages.html</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://zatsuney.github.io/COR33FR/discord.html</loc>
+    <priority>0.5</priority>
+  </url>
+</urlset>
