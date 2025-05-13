@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>News</title>
-    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="/styles/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
@@ -93,55 +93,16 @@
             max-width: 100%;
             height: auto;
         }
-        /* Styles pour les écrans de petite taille */
-        @media (max-width: 768px) {
-            nav ul {
-                display: none; /* Masquer le menu par défaut */
-                flex-direction: column; /* Empiler les éléments verticalement */
-                background-color: #181818; /* Couleur de fond pour le menu déroulant */
-                position: absolute;
-                top: 60px; /* Ajuster selon la hauteur de votre header */
-                left: 0;
-                width: 100%;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            }
-
-            nav ul.open {
-                display: flex; /* Afficher le menu lorsqu'il est ouvert */
-            }
-
-            .menu-toggle {
-                display: block; /* Afficher le bouton pour mobile */
-                background-color: #333;
-                color: #fff;
-                padding: 10px;
-                text-align: center;
-                cursor: pointer;
-            }
-
-            .header-image {
-                max-width: 90%; /* Réduire la taille de l'image */
-            }
-
-            h1 {
-                font-size: 1.5rem; /* Réduire la taille du titre */
-            }
-
-            footer ul {
-                flex-direction: column; /* Empiler les liens du footer */
-                text-align: center;
-            }
-        }
     </style>
 </head>
 <body>
     <header>
-        <img src="../images/title.png" alt="Clair Obscur Ressources FR" class="header-image">
+        <img src="/images/title.png" alt="Clair Obscur Ressources FR" class="header-image">
         <button class="menu-toggle">Menu</button> <!-- Bouton pour mobile -->
         <nav>
             <ul>
                 <button class="menu-close">Fermer</button> <!-- Bouton pour fermer le menu -->
-                <li><a href="../index.html">Accueil</a></li> <!-- Lien vers la racine -->
+                <li><a href="/index.html">Accueil</a></li> <!-- Lien vers la racine -->
                 <li><a href="../tabs/armes.html">Armes</a></li>
                 <li><a href="../tabs/competences-de-monoco.html">Compétences de Monoco</a></li>
                 <li><a href="../tabs/disques.html">Disques</a></li>
@@ -228,8 +189,8 @@
     <script src="scripts/app.js"></script>
            <footer>
         <ul>
-            <li><a href="tabs/contact.html">Contact</a></li>
-            <li><a href="tabs/mentionlegal.html">Mentions Légal</a></li>
+            <li><a href="../tabs/contact.html">Contact</a></li>
+            <li><a href="../tabs/mentionlegal.html">Mentions Légal</a></li>
         </ul>
         <p>&copy; 2025 Zatsu - Clair Obscur : Expédition 33 Ressources FR</p>
     </footer>
