@@ -180,6 +180,13 @@
         .dropdown-menu a:hover {
             background-color: #444;
         }
+
+        /* Ajoute dans ton <style> ou fichier CSS */
+        .selected-skill {
+            background-color: #ff6600;
+            color: #fff;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -261,10 +268,10 @@
         </div>
         <div class="menu-section">
             <h2>Compétences</h2>
-            <button>Selectionner Compétences</button>
-            <ul>
-A VENIR
-            </ul>
+            <button onclick="loadSkills()">Sélectionner Compétences</button>
+            <button id="close-skill-menu" style="margin-left:10px; display:none;" onclick="closeSkillMenu()">Fermer le menu</button>
+            <p id="selected-skill" style="margin-top: 10px; font-size: 16px; color: #f4f4f4;">Aucune compétence sélectionnée</p>
+            <ul id="skill-list" style="margin-top:10px; list-style:none; padding:0; color:#f4f4f4;"></ul>
         </div>
         <div class="menu-section">
             <h2>Pictos</h2>
@@ -328,6 +335,7 @@ A VENIR
                         <button onclick="updateStat('luck', -1, event)">-</button>
                     </div>
                 </li>
+                <td>ctrl/shift+clic = +5/+10</td>
             </ul>
         </div>
         <div class="menu-section">
@@ -745,9 +753,10 @@ const database = firebase.database();
                     description: description,
                     character: selectedCharacter,
                     weapon: selectedWeapon,
-                    pictos: selectedPictos || [], // Utilise le tableau global des pictos sélectionnés
-                    luminas: selectedLuminas || [], // Utilise le tableau global des Luminas sélectionnés
-                    totalCost: totalCost || 0 // Utilise la variable globale pour le coût total
+                    skills: selectedSkills || [], // AJOUT ICI
+                    pictos: selectedPictos || [],
+                    luminas: selectedLuminas || [],
+                    totalCost: totalCost || 0
                 };
 
                 // Envoie les données à Firebase
@@ -789,6 +798,117 @@ const database = firebase.database();
                 console.error("Le bouton 'Sauvegarder' avec l'ID 'save-button' n'a pas été trouvé.");
             }
         });
+
+        let selectedSkills = []; // Ajoute ceci en haut de ton script
+
+        function loadSkills() {
+            const skillList = document.getElementById('skill-list');
+            const closeBtn = document.getElementById('close-skill-menu');
+            skillList.innerHTML = '';
+            closeBtn.style.display = 'inline-block'; // Affiche le bouton fermer
+
+            // Retire ou commente la ligne suivante :
+            // document.getElementById('selected-skill').textContent = "Aucune compétence sélectionnée";
+
+            if (!selectedCharacter) {
+                skillList.innerHTML = '<li style="color:#fff;">Veuillez sélectionner un personnage.</li>';
+                return;
+            }
+
+            // Détermine le fichier source selon le personnage
+            let skillSource = '';
+            switch (selectedCharacter) {
+                case 'Gustave':
+                    skillSource = 'gustaveskill.html';
+                    break;
+                case 'Lune':
+                    skillSource = 'luneskill.html';
+                    break;
+                case 'Sciel':
+                    skillSource = 'scielskill.html';
+                    break;
+                case 'Maelle':
+                    skillSource = 'maelleskill.html';
+                    break;
+                case 'Monoco':
+                    skillSource = 'monocoskill.html';
+                    break;
+                case 'Verso':
+                    skillSource = 'versoskill.html';
+                    break;
+                default:
+                    skillList.innerHTML = '<li style="color:#fff;">Aucune compétence disponible.</li>';
+                    return;
+            }
+
+            fetch(skillSource)
+                .then(response => {
+                    if (!response.ok) throw new Error('Erreur lors du chargement des compétences.');
+                    return response.text();
+                })
+                .then(html => {
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = html;
+                    const skillItems = tempDiv.querySelectorAll('li.skill-name');
+                    if (skillItems.length === 0) {
+                        skillList.innerHTML = '<li style="color:#fff;">Aucune compétence trouvée.</li>';
+                    } else {
+                        skillItems.forEach(item => {
+                            const li = document.createElement('li');
+                            li.innerHTML = item.innerHTML; // Garde la description et la mise en forme
+                            li.classList.add('skill-name');
+                            li.style.cursor = 'pointer';
+
+                            li.onclick = function() {
+                                // Récupère uniquement le nom (avant le saut de ligne ou la description)
+                                const skillName = item.childNodes[0].textContent.trim();
+
+                                // Empêche les doublons
+                                if (selectedSkills.includes(skillName)) {
+                                    alert("Cette compétence est déjà sélectionnée.");
+                                    return;
+                                }
+                                // Limite à 6 compétences
+                                if (selectedSkills.length >= 6) {
+                                    alert("Vous ne pouvez sélectionner que 6 compétences maximum.");
+                                    return;
+                                }
+                                // Ajoute la compétence sélectionnée
+                                selectedSkills.push(skillName);
+
+                                // Met à jour l'affichage sous le bouton
+                                document.getElementById('selected-skill').innerHTML = selectedSkills.map((skill, idx) =>
+                                    `<span style="display:inline-block;margin:2px 4px;padding:2px 6px;background:#ff6600;border-radius:4px;">${skill} <button onclick="removeSkill(${idx})" style='background:none;border:none;color:#fff;cursor:pointer;font-weight:bold;'>×</button></span>`
+                                ).join(' ');
+
+                                // Ferme le menu (vide la liste)
+                                skillList.innerHTML = '';
+                                document.getElementById('close-skill-menu').style.display = 'none';
+                            };
+
+                            skillList.appendChild(li);
+                        });
+                    }
+                })
+                .catch(error => {
+                    skillList.innerHTML = `<li style="color:#fff;">Erreur : ${error.message}</li>`;
+                });
+        }
+
+        // Ajoute cette fonction pour fermer le menu
+        function closeSkillMenu() {
+            document.getElementById('skill-list').innerHTML = '';
+            document.getElementById('close-skill-menu').style.display = 'none';
+            // NE PAS modifier selected-skill ici !
+        }
+
+        // Fonction pour retirer une compétence sélectionnée
+        function removeSkill(idx) {
+            selectedSkills.splice(idx, 1);
+            document.getElementById('selected-skill').innerHTML = selectedSkills.map((skill, i) =>
+                `<span style="display:inline-block;margin:2px 4px;padding:2px 6px;background:#ff6600;border-radius:4px;">${skill} <button onclick="removeSkill(${i})" style='background:none;border:none;color:#fff;cursor:pointer;font-weight:bold;'>×</button></span>`
+            ).join(' ');
+        }
     </script>
     <script src="../scripts/app.js"></script>
 <footer>
