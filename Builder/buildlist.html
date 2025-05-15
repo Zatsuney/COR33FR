@@ -342,11 +342,22 @@
                     ? build.luminas.map(l => `${l.name} (Coût : ${l.cost})`).join(', ')
                     : 'Aucun';
 
+                // Affiche les compétences si elles existent
+                let skillsList = [];
+                if (Array.isArray(build.skills)) {
+                    skillsList = build.skills;
+                } else if (typeof build.skills === 'object' && build.skills !== null) {
+                    skillsList = Object.values(build.skills);
+                }
+                const skills = skillsList.length > 0
+                    ? skillsList.map(s => `<li>${s}</li>`).join('')
+                    : '<li>Aucune</li>';
+
                 // Fonction pour mettre en surbrillance les mots trouvés
                 const highlight = (text) => {
-                    if (!query) return text; // Si aucune requête, retourne le texte original
-                    const regex = new RegExp(`(${query})`, 'gi'); // Crée une expression régulière pour la requête
-                    return text.replace(regex, '<span class="highlight">$1</span>'); // Remplace les correspondances par une balise <span>
+                    if (!query) return text;
+                    const regex = new RegExp(`(${query})`, 'gi');
+                    return text.replace(regex, '<span class="highlight">$1</span>');
                 };
 
                 buildDiv.innerHTML = `
@@ -357,6 +368,8 @@
                     <p><strong>Arme :</strong> ${highlight(build.weapon || 'Non spécifiée')}</p>
                     <p><strong>Pictos :</strong> ${highlight(pictos)}</p>
                     <p><strong>Luminas :</strong> ${highlight(luminas)}</p>
+                    <p><strong>Compétences :</strong></p>
+                    <ul>${skills}</ul>
                     <p><strong>Coût total :</strong> ${build.totalCost || 0}</p>
                 `;
 
